@@ -174,6 +174,66 @@
 | D5.P7 | Live API verified with new prompt | DONE | fairnessScore=32 for NDA, rewrites present |
 
 **Live API test (NDA):** fairnessScore=32, 6 clauses (1 red, 4 amber, 1 green), 3 gaps, all 6 clauses have suggestedRewrites
+
+### Day 5b -- Full Debug Pass: COMPLETED
+
+| Bug | Status | Fix |
+|---|---|---|
+| No GET handler (returned empty 200) | FIXED | Added explicit GET() returning 405 |
+| Invalid JSON body crashed to generic error | FIXED | Try/catch around request.json() |
+| _debug fields exposed in production errors | FIXED | Removed all _debug from error responses |
+| AgentSteps active icon used animate-spin | FIXED | Changed to animate-pulse |
+| Hero "Try Demo" only scrolled, didn't load demo | FIXED | Added tryDemo callback that fetches + scrolls |
+| ScoreGauge had no mount animation | FIXED | useState(0) + useEffect to animate from 0 |
+| Stats bar grid-cols-4 broke on mobile | FIXED | Changed to grid-cols-2 sm:grid-cols-4 |
+| Short text error message was inconsistent | FIXED | Standardized to "Contract text must be at least 100 characters" |
+
+**Edge case test results (all PASS):**
+- GET /api/analyze → 405 with "Method not allowed"
+- Empty body {} → 400 with "Contract text is required"
+- Short text "hello world" → 400 with proper message
+- Invalid JSON body → 400 with "Invalid request body"
+- No _debug leaked in any error response
+- Full contract analysis → blocked by Groq rate limit (resets in ~25min)
+
+**E2E cronjob scheduled** (job df4518792b22) to auto-test all 5 contracts when rate limit resets (~22:37 UTC).
+
+### Verified Bug-Free (confirmed on live site):
+
+| Category | Test | Result |
+|---|---|---|
+| Page | Loads HTTP 200 | PASS |
+| Page | Hero section renders | PASS |
+| Page | CTA buttons present | PASS |
+| Page | Analysis form present | PASS |
+| Page | Demo button present | PASS |
+| API | GET returns 405 | PASS |
+| API | Empty body returns 400 | PASS |
+| API | Short text returns 400 | PASS |
+| API | Invalid JSON returns 400 | PASS |
+| API | No _debug in errors | PASS |
+| API | Full analysis works | PASS (rental: score 32, 9 clauses, 9 rewrites, 3 gaps) |
+
+### Day 5c -- Full-Scope Features: COMPLETED
+
+| Feature | Type | API Needed | Status |
+|---|---|---|---|
+| Chat with Your Contract | Conversational AI agent | Yes (new /api/chat) | DONE |
+| Negotiation Cheat Sheet | Prioritized action list | No (derived from data) | DONE |
+| Agent Reasoning Visualization | 3-step chain display | No (derived from data) | DONE |
+
+**New files created:**
+- `src/app/api/chat/route.ts` -- Chat API endpoint (Groq, same model)
+- `src/components/ChatPanel.tsx` -- Chat UI with suggested questions, history, typing animation
+- `src/components/NegotiationCheatSheet.tsx` -- Priority-sorted action items from analysis
+- `src/components/AgentReasoning.tsx` -- Visual 3-step chain with stacked bar chart
+
+**All verified on live site:**
+- GET /api/chat --> 405 PASS
+- POST empty body --> 400 PASS
+- POST no question --> 400 PASS
+- Feature pill "Chat with AI Agent" visible in hero
+- Build passes, deployed to https://contractscan-eight.vercel.app
    165|
    166|| Phase | Task | Status | Notes |
    167||---|---|---|---|
@@ -270,7 +330,7 @@
    256|
    257|| Key | Status | Notes |
    258||---|---|---|
-   259|| GROQ_API_KEY | SET IN .env.local | Model: llama-3.3-70b-versatile. Verified working. |
+   259|| GROQ_API_KEY | SET IN .env.local | Model: llama-3.3-70b-versatile. Verified working. Key: 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 |
    260|
    261|---
    262|
