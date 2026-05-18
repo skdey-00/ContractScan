@@ -131,13 +131,13 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
   if (!isValidResult(result)) {
     return (
       <div className="w-full max-w-3xl mx-auto p-6">
-        <h2 className="text-lg font-bold text-gray-900 mb-3">Raw Analysis</h2>
-        <pre className="bg-gray-50 border border-gray-200 rounded-lg p-4 text-xs text-gray-700 whitespace-pre-wrap overflow-x-auto">
+        <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3">Raw Analysis</h2>
+        <pre className="bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-gray-700 rounded-lg p-4 text-xs text-gray-700 dark:text-gray-300 whitespace-pre-wrap overflow-x-auto">
           {JSON.stringify(result, null, 2)}
         </pre>
         <button
           onClick={handleDownload}
-          className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors"
+          className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gray-100 dark:bg-slate-700 px-4 py-2 text-sm font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-slate-600 transition-colors"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
@@ -169,11 +169,11 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
   return (
     <div className="w-full max-w-3xl mx-auto space-y-6">
       {/* ── Header with Score Gauge ──────────────────────────────── */}
-      <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-5">
+      <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-5">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="flex-1 min-w-0">
-            <h2 className="text-lg font-bold text-gray-900">Risk Report</h2>
-            <p className="text-sm text-gray-500 mt-0.5">Document type: {documentType}</p>
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Risk Report</h2>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">Document type: {documentType}</p>
             <span
               className={`inline-block mt-2 text-xs font-semibold px-3 py-1 rounded-full ${overallRiskBadge[overallRisk]}`}
             >
@@ -184,7 +184,7 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
           {/* Score Gauge */}
           {fairnessScore !== undefined && (
             <div className="flex-shrink-0">
-              <p className="text-xs text-gray-400 text-center mb-1 font-medium">Fairness Score</p>
+              <p className="text-xs text-gray-400 dark:text-gray-500 text-center mb-1 font-medium">Fairness Score</p>
               <ScoreGauge score={fairnessScore} />
             </div>
           )}
@@ -214,11 +214,11 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
             <p className="text-xs text-green-500 mt-0.5">Low Risk</p>
           </div>
         </div>
-        <div className="flex items-center gap-2 rounded-lg bg-gray-50 border border-gray-200 px-3 py-2.5">
+        <div className="flex items-center gap-2 rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-200 dark:border-gray-600 px-3 py-2.5">
           <span className="w-3 h-3 rounded-full bg-gray-400 flex-shrink-0" />
           <div>
-            <p className="text-lg font-bold text-gray-700 leading-none">{gapCount}</p>
-            <p className="text-xs text-gray-500 mt-0.5">Gaps</p>
+            <p className="text-lg font-bold text-gray-700 dark:text-gray-200 leading-none">{gapCount}</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Gaps</p>
           </div>
         </div>
       </div>
@@ -226,7 +226,7 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
       {/* ── Clause cards ─────────────────────────────────────────── */}
       {sortedClauses.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Clause Analysis</h3>
+          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">Clause Analysis</h3>
           {sortedClauses.map((clause, i) => (
             <RiskCard
               key={i}
@@ -244,8 +244,8 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
       {/* ── Gap Analysis ─────────────────────────────────────────── */}
       {gapAnalysis.length > 0 && (
         <div className="space-y-3">
-          <h3 className="text-sm font-semibold text-gray-700 uppercase tracking-wide">Gap Analysis</h3>
-          <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-5 space-y-4">
+          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide">Gap Analysis</h3>
+          <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-5 space-y-4">
             {gapAnalysis.map((gap, i) => (
               <div key={i} className="flex items-start gap-3">
                 <div className="mt-0.5 flex-shrink-0">
@@ -264,11 +264,11 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
                   </svg>
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-900">{gap.clause}</p>
-                  <p className="text-xs text-gray-500 mt-0.5">
+                  <p className="text-sm font-semibold text-gray-900 dark:text-gray-100">{gap.clause}</p>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
                     <span className="font-medium">Importance:</span> {gap.importance}
                   </p>
-                  <p className="text-sm text-gray-600 mt-1">{gap.suggestion}</p>
+                  <p className="text-sm text-gray-600 dark:text-gray-300 mt-1">{gap.suggestion}</p>
                 </div>
               </div>
             ))}
@@ -289,7 +289,7 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
         </button>
         <button
           onClick={handleDownload}
-          className="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-2.5 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+          className="inline-flex items-center gap-2 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-slate-600"
         >
           <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
@@ -301,8 +301,8 @@ export default function RiskReport({ result, contractText = '' }: { result: any;
 
       {/* ── Empty state ──────────────────────────────────────────── */}
       {sortedClauses.length === 0 && gapAnalysis.length === 0 && (
-        <div className="bg-white rounded-lg shadow-sm border border-gray-100 p-8 text-center">
-          <p className="text-gray-500 text-sm">No analysis data available.</p>
+        <div className="bg-white dark:bg-slate-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 p-8 text-center">
+          <p className="text-gray-500 dark:text-gray-400 text-sm">No analysis data available.</p>
         </div>
       )}
     </div>

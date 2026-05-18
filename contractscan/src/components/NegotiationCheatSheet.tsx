@@ -128,18 +128,18 @@ export default function NegotiationCheatSheet({ result }: { result: any }) {
   if (actionItems.length === 0) {
     return (
       <div className="w-full max-w-3xl mx-auto">
-        <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
           <button
             onClick={() => setExpanded(!expanded)}
-            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition-colors"
+            className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
           >
             <div className="flex items-center gap-2">
-              <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <svg className="w-5 h-5 text-gray-700 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
               </svg>
-              <h2 className="text-lg font-bold text-gray-900">Negotiation Cheat Sheet</h2>
+              <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Negotiation Cheat Sheet</h2>
             </div>
-            <span className="text-sm text-gray-400">No items to negotiate</span>
+            <span className="text-sm text-gray-400 dark:text-gray-500">No items to negotiate</span>
           </button>
         </div>
       </div>
@@ -148,26 +148,26 @@ export default function NegotiationCheatSheet({ result }: { result: any }) {
 
   return (
     <div className="w-full max-w-3xl mx-auto">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+      <div className="bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 overflow-hidden">
         {/* ── Collapsible header ─────────────────────────────────────────── */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 transition-colors"
+          className="w-full flex items-center justify-between px-5 py-4 text-left hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
         >
           <div className="flex items-center gap-2">
-            <svg className="w-5 h-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg className="w-5 h-5 text-gray-700 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
             </svg>
-            <h2 className="text-lg font-bold text-gray-900">Negotiation Cheat Sheet</h2>
+            <h2 className="text-lg font-bold text-gray-900 dark:text-gray-100">Negotiation Cheat Sheet</h2>
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2.5 py-1 rounded-full">
+            <span className="text-xs font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-slate-700 px-2.5 py-1 rounded-full">
               {actionItems.length} {actionItems.length === 1 ? 'item' : 'items'} to negotiate
             </span>
             {/* Chevron */}
             <svg
-              className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
+              className={`w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200 ${expanded ? 'rotate-180' : ''}`}
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -184,13 +184,13 @@ export default function NegotiationCheatSheet({ result }: { result: any }) {
             {actionItems.map((item, index) => (
               <div
                 key={index}
-                className="rounded-lg bg-gray-50 border border-gray-100 overflow-hidden"
+                className="rounded-lg bg-gray-50 dark:bg-slate-700 border border-gray-100 dark:border-gray-600 overflow-hidden"
                 style={{ borderLeftWidth: 4, borderLeftColor: PRIORITY_BORDER_COLORS[item.priority] }}
               >
                 <div className="p-4">
                   {/* Number + Badge + Action */}
                   <div className="flex items-start gap-3">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white border border-gray-200 flex items-center justify-center text-xs font-bold text-gray-500">
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-white dark:bg-slate-600 border border-gray-200 dark:border-gray-500 flex items-center justify-center text-xs font-bold text-gray-500 dark:text-gray-300">
                       {index + 1}
                     </span>
                     <div className="flex-1 min-w-0">
@@ -201,18 +201,18 @@ export default function NegotiationCheatSheet({ result }: { result: any }) {
                           {item.priority}
                         </span>
                       </div>
-                      <p className="text-sm font-semibold text-gray-900 leading-snug">
+                      <p className="text-sm font-semibold text-gray-900 dark:text-gray-100 leading-snug">
                         {item.action}
                       </p>
-                      <p className="text-xs text-gray-400 mt-1 leading-relaxed">
+                      <p className="text-xs text-gray-400 dark:text-gray-500 mt-1 leading-relaxed">
                         {item.original}
                       </p>
 
                       {/* Suggested rewrite */}
                       {item.suggestedRewrite && (
-                        <div className="mt-2 p-2.5 bg-green-50 border border-green-100 rounded-lg">
-                          <p className="text-xs font-semibold text-green-700 mb-1">Suggested wording</p>
-                          <p className="text-xs text-gray-700 leading-relaxed whitespace-pre-line">
+                        <div className="mt-2 p-2.5 bg-green-50 dark:bg-emerald-900/20 border border-green-100 dark:border-emerald-800 rounded-lg">
+                          <p className="text-xs font-semibold text-green-700 dark:text-green-400 mb-1">Suggested wording</p>
+                          <p className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed whitespace-pre-line">
                             {item.suggestedRewrite}
                           </p>
                         </div>

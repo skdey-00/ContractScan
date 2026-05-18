@@ -61,9 +61,9 @@ function generateSuggestions(analysisContext: any): string[] {
 function TypingDots() {
   return (
     <div className="flex items-center gap-1 px-3 py-2">
-      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '0ms' }} />
-      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '150ms' }} />
-      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 animate-bounce" style={{ animationDelay: '300ms' }} />
+      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-bounce" style={{ animationDelay: '0ms' }} />
+      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-bounce" style={{ animationDelay: '150ms' }} />
+      <span className="inline-block w-2 h-2 rounded-full bg-gray-400 dark:bg-gray-500 animate-bounce" style={{ animationDelay: '300ms' }} />
     </div>
   );
 }
@@ -147,7 +147,7 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
       {/* Collapsible header */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between rounded-xl border border-gray-200 bg-white px-5 py-3.5 shadow-sm transition-colors hover:bg-gray-50"
+        className="w-full flex items-center justify-between rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 px-5 py-3.5 shadow-sm transition-colors hover:bg-gray-50 dark:hover:bg-slate-700"
       >
         <div className="flex items-center gap-2.5">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
@@ -155,10 +155,10 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
               <path strokeLinecap="round" strokeLinejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
             </svg>
           </div>
-          <span className="text-sm font-semibold text-gray-800">Chat with Your Contract</span>
+          <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">Chat with Your Contract</span>
         </div>
         <svg
-          className={`w-5 h-5 text-gray-400 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
+          className={`w-5 h-5 text-gray-400 dark:text-gray-500 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -170,17 +170,17 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
 
       {/* Expandable panel */}
       {isOpen && (
-        <div className="mt-2 rounded-xl border border-gray-200 bg-white shadow-sm overflow-hidden">
+        <div className="mt-2 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 shadow-sm overflow-hidden">
           {/* Suggested questions */}
           {messages.length === 0 && !isLoading && (
             <div className="px-4 pt-4 pb-2">
-              <p className="text-xs font-medium text-gray-500 mb-2">Suggested questions</p>
+              <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-2">Suggested questions</p>
               <div className="flex flex-wrap gap-2">
                 {suggestions.map((q, i) => (
                   <button
                     key={i}
                     onClick={() => handleSuggestionClick(q)}
-                    className="rounded-full border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-medium text-gray-700 transition-colors hover:bg-blue-50 hover:border-blue-200 hover:text-blue-700"
+                    className="rounded-full border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-slate-700 px-3 py-1.5 text-xs font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-blue-50 dark:hover:bg-slate-600 hover:border-blue-200 hover:text-blue-700"
                   >
                     {q}
                   </button>
@@ -193,7 +193,7 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
           <div className="max-h-64 overflow-y-auto px-4 py-3 space-y-3">
             {messages.length === 0 && !isLoading && (
               <div className="flex items-center justify-center py-8">
-                <p className="text-sm text-gray-400">Ask a question about your contract</p>
+                <p className="text-sm text-gray-400 dark:text-gray-500">Ask a question about your contract</p>
               </div>
             )}
 
@@ -205,8 +205,8 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
                 <div
                   className={`max-w-[85%] rounded-xl px-3.5 py-2.5 text-sm leading-relaxed ${
                     msg.role === 'user'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-800'
+                      ? 'bg-blue-600 dark:bg-blue-900 text-white dark:text-blue-200'
+                      : 'bg-gray-100 dark:bg-slate-700 text-gray-800 dark:text-gray-200'
                   }`}
                 >
                   {msg.content}
@@ -217,7 +217,7 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
             {/* Loading indicator */}
             {isLoading && (
               <div className="flex justify-start">
-                <div className="bg-gray-100 rounded-xl">
+                <div className="bg-gray-100 dark:bg-slate-700 rounded-xl">
                   <TypingDots />
                 </div>
               </div>
@@ -227,7 +227,7 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
           </div>
 
           {/* Input bar */}
-          <div className="border-t border-gray-100 px-4 py-3 flex items-center gap-2">
+          <div className="border-t border-gray-100 dark:border-gray-700 px-4 py-3 flex items-center gap-2">
             <input
               ref={inputRef}
               type="text"
@@ -236,7 +236,7 @@ export default function ChatPanel({ contractText, analysisContext }: ChatPanelPr
               onKeyDown={handleKeyDown}
               placeholder="Ask about your contract..."
               disabled={isLoading}
-              className="flex-1 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="flex-1 rounded-lg border border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-slate-700 px-3 py-2 text-sm text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
               maxLength={500}
             />
             <button

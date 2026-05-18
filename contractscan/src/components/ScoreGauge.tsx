@@ -72,7 +72,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
         {/* Score text centred inside the arc */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-1">
           <span className={`text-3xl font-bold ${colors.text}`}>{displayScore}</span>
-          <span className="text-xs text-gray-400 -mt-1">/ 100</span>
+          <span className="text-xs text-gray-400 dark:text-gray-500 -mt-1">/ 100</span>
         </div>
       </div>
       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>

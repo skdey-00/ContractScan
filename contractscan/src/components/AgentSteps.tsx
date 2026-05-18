@@ -44,10 +44,10 @@ export default function AgentSteps({ isLoading, currentStep }: AgentStepsProps) 
       <div className="flex items-start justify-between gap-4 w-full max-w-2xl mx-auto py-6">
         {steps.map((label, i) => (
           <div key={i} className="flex flex-col items-center flex-1">
-            <div className="w-8 h-8 rounded-full border-2 border-gray-300 bg-gray-100 flex items-center justify-center">
-              <span className="text-xs text-gray-400">{i + 1}</span>
+            <div className="w-8 h-8 rounded-full border-2 border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-slate-700 flex items-center justify-center">
+              <span className="text-xs text-gray-400 dark:text-gray-500">{i + 1}</span>
             </div>
-            <p className="mt-2 text-xs text-gray-400 text-center leading-tight">{label}</p>
+            <p className="mt-2 text-xs text-gray-400 dark:text-gray-500 text-center leading-tight">{label}</p>
           </div>
         ))}
       </div>
@@ -68,7 +68,7 @@ export default function AgentSteps({ isLoading, currentStep }: AgentStepsProps) 
                   ? 'border-green-500 bg-green-500'
                   : isActive
                   ? 'border-blue-500 bg-blue-50 animate-pulse'
-                  : 'border-gray-300 bg-gray-100'
+                  : 'border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-slate-700'
               }`}
             >
               {isComplete ? (
@@ -84,12 +84,12 @@ export default function AgentSteps({ isLoading, currentStep }: AgentStepsProps) 
                   />
                 </svg>
               ) : (
-                <span className="text-xs text-gray-400">{i + 1}</span>
+                <span className="text-xs text-gray-400 dark:text-gray-500">{i + 1}</span>
               )}
             </div>
             <p
               className={`mt-2 text-xs text-center leading-tight ${
-                isComplete ? 'text-green-600' : isActive ? 'text-blue-600 font-medium' : 'text-gray-400'
+                isComplete ? 'text-green-600' : isActive ? 'text-blue-600 font-medium' : 'text-gray-400 dark:text-gray-500'
               }`}
             >
               {label}

@@ -167,12 +167,23 @@ The legal tech market in India alone is projected at ₹180 crore ARR by 2027. G
 
 ## What's Next (Post-Hackathon Roadmap)
 
-1. **Multi-document comparison** — upload two versions of a contract and the agent tells you what changed
-2. **Plain-English rewrite** — for each flagged clause, generate a fair alternative the user can propose
-3. **Contract scoring** — a single 0-100 score for contract fairness, with category breakdowns
-4. **Batch analysis** — upload a folder of contracts and rank them by risk
-5. **Mobile-first redesign** — most users will scan and sign on their phone
-6. **Regional language support** — Hindi, Tamil, Bengali contract analysis for tier-2/3 India
+### Already Built
+1. ~~Multi-document comparison~~ -- compare two versions side-by-side with diff highlighting
+2. ~~Plain-English rewrite~~ -- suggested rewrites for every flagged clause
+3. ~~Contract scoring~~ -- fairness score 0-100 with animated gauge
+4. ~~Chat with your contract~~ -- conversational AI to ask follow-up questions
+5. ~~Negotiation cheat sheet~~ -- prioritized action items derived from analysis
+6. ~~Agent reasoning visualization~~ -- transparent 3-step chain-of-thought display
+7. ~~Shareable report links~~ -- one-click URL sharing with base64 encoding
+8. ~~Dark mode~~ -- full dark/light theme toggle
+9. ~~Mobile responsive~~ -- works on all screen sizes
+
+### Future Roadmap
+1. **Chrome Extension** -- highlight any contract text on any website (DocuSign, Google Docs, PDF viewers) and right-click to analyze. Real-time clause highlighting as you scroll. Notification badge when risky clauses are detected on the current page. This brings ContractScan to where people actually sign contracts -- in their browser.
+2. **Batch analysis** -- upload a folder of contracts and rank them by risk
+3. **Regional language support** -- Hindi, Tamil, Bengali contract analysis for tier-2/3 India
+4. **Document signing integration** -- connect with DocuSign/Adobe Sign APIs to analyze before you sign
+5. **Enterprise dashboard** -- manage contracts for teams with role-based access
 
 ---
 

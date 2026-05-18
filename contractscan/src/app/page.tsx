@@ -27,7 +27,7 @@ function BackToTop() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Back to top"
-      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-transform hover:scale-110 hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-transform hover:scale-110 hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 dark:bg-blue-500 dark:hover:bg-blue-600"
     >
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
@@ -116,7 +116,7 @@ function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo
         >
           <path
             d="M0,40 C360,80 720,0 1080,40 C1260,60 1380,50 1440,40 L1440,80 L0,80 Z"
-            fill="#ffffff"
+            fill="var(--background, #ffffff)"
           />
         </svg>
       </div>
@@ -270,9 +270,9 @@ export default function Home() {
 
   // ── Render ─────────────────────────────────────────────────────────
   return (
-    <div className="min-h-screen flex flex-col bg-white text-gray-900">
+    <div className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">
       {/* ── Header ─────────────────────────────────────────────────── */}
-      <header className="border-b border-gray-200 bg-white relative z-10">
+      <header className="border-b border-gray-200 bg-white relative z-10 dark:border-gray-700 dark:bg-slate-900">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex items-center gap-3">
           {/* Logo / Icon */}
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-lg">
@@ -280,7 +280,7 @@ export default function Home() {
           </div>
           <div className="min-w-0">
             <h1 className="text-xl font-semibold tracking-tight truncate">ContractScan AI</h1>
-            <p className="text-sm text-gray-500 truncate">AI‑powered contract analysis for non‑lawyers</p>
+            <p className="text-sm text-gray-500 truncate dark:text-gray-400">AI‑powered contract analysis for non‑lawyers</p>
           </div>
           {/* Theme toggle — absolute top-right */}
           <div className="ml-auto flex-shrink-0">
@@ -313,10 +313,10 @@ export default function Home() {
                 px-6 py-10 cursor-pointer transition-colors
                 ${
                   isDragging
-                    ? 'border-blue-500 bg-blue-50'
+                    ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
                     : file
-                      ? 'border-green-400 bg-green-50'
-                      : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100'
+                      ? 'border-green-400 bg-green-50 dark:bg-green-900/30 dark:border-green-600'
+                      : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100 dark:border-gray-600 dark:bg-slate-800 dark:hover:border-gray-500 dark:hover:bg-slate-700'
                 }
               `}
             >
@@ -345,15 +345,15 @@ export default function Home() {
 
               {file ? (
                 <>
-                  <p className="text-sm font-medium text-green-700">{file.name}</p>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className="text-sm font-medium text-green-700 dark:text-green-400">{file.name}</p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
                     {(file.size / 1024).toFixed(1)} KB &middot; Click or drop to replace
                   </p>
                 </>
               ) : (
                 <>
-                  <p className="text-sm font-medium text-gray-700">Drop PDF here or click to upload</p>
-                  <p className="mt-1 text-xs text-gray-500">PDF files only</p>
+                  <p className="text-sm font-medium text-gray-700 dark:text-gray-300">Drop PDF here or click to upload</p>
+                  <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">PDF files only</p>
                 </>
               )}
             </div>
@@ -370,7 +370,7 @@ export default function Home() {
                 setError(null);
               }}
               placeholder="Or paste contract text here..."
-              className="min-h-[150px] sm:min-h-[200px] w-full resize-y rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="min-h-[150px] sm:min-h-[200px] w-full resize-y rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-gray-500 dark:focus:border-blue-400 dark:focus:ring-blue-400"
             />
 
             {/* Analyse button */}
@@ -415,7 +415,7 @@ export default function Home() {
                       .then((t) => setText(t))
                       .catch(() => {});
                   }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700"
                 >
                   Load Demo Contract
                 </button>
@@ -430,7 +430,7 @@ export default function Home() {
           <section className="flex flex-col">
             {/* Error */}
             {error && (
-              <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+              <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-400">
                 <span className="font-medium">Error:</span> {error}
               </div>
             )}
@@ -457,7 +457,7 @@ export default function Home() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                   />
                 </svg>
-                <p className="text-sm font-medium text-gray-600">Analysing your contract…</p>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Analysing your contract…</p>
               </div>
             )}
 
@@ -465,10 +465,10 @@ export default function Home() {
             {!isLoading && result && (
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <h2 className="text-sm font-semibold text-gray-700">Analysis Complete</h2>
+                  <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Analysis Complete</h2>
                   <button
                     onClick={handleReset}
-                    className="text-xs text-blue-600 hover:text-blue-800 font-medium"
+                    className="text-xs text-blue-600 hover:text-blue-800 font-medium dark:text-blue-400 dark:hover:text-blue-300"
                   >
                     New Analysis
                   </button>
@@ -491,9 +491,9 @@ export default function Home() {
 
             {/* Empty / placeholder state */}
             {!isLoading && !result && !error && (
-              <div className="flex flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 py-24 text-center">
+              <div className="flex flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 py-24 text-center dark:border-gray-600 dark:bg-slate-800/50">
                 <svg
-                  className="h-16 w-16 text-gray-300"
+                  className="h-16 w-16 text-gray-300 dark:text-gray-500"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -505,7 +505,7 @@ export default function Home() {
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                   />
                 </svg>
-                <p className="text-sm text-gray-500">
+                <p className="text-sm text-gray-500 dark:text-gray-400">
                   Upload a contract or paste text to get started
                 </p>
               </div>
@@ -515,7 +515,7 @@ export default function Home() {
       </main>
 
       {/* ── Footer ─────────────────────────────────────────────────── */}
-      <footer className="border-t border-gray-200 py-4 text-center text-xs text-gray-400">
+      <footer className="border-t border-gray-200 py-4 text-center text-xs text-gray-400 dark:border-gray-700 dark:text-gray-500">
         ContractScan AI &mdash; for educational purposes only. Not legal advice.
       </footer>
     </div>

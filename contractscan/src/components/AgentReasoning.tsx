@@ -62,7 +62,7 @@ const importanceBadge: Record<string, string> = {
 function ChevronDown({ open }: { open: boolean }) {
   return (
     <svg
-      className={`w-5 h-5 text-gray-500 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+      className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
@@ -94,7 +94,7 @@ function StackedBar({ red, amber, green }: { red: number; amber: number; green: 
   const pct = (n: number) => `${(n / total) * 100}%`;
 
   return (
-    <div className="flex rounded-full overflow-hidden h-3 w-full max-w-md bg-gray-100">
+    <div className="flex rounded-full overflow-hidden h-3 w-full max-w-md bg-gray-100 dark:bg-gray-700">
       {red > 0 && (
         <div className="bg-red-500 h-full transition-all duration-500" style={{ width: pct(red) }} title={`${red} High Risk`} />
       )}
@@ -132,11 +132,11 @@ function ClauseRow({ clause }: { clause: Clause }) {
         >
           {riskBadgeLabels[clause.riskLevel]}
         </span>
-        <span className="text-sm text-gray-800 group-hover:text-blue-600 transition-colors truncate">
+        <span className="text-sm text-gray-800 dark:text-gray-200 group-hover:text-blue-600 transition-colors truncate">
           {clause.title}
         </span>
         <svg
-          className={`w-3.5 h-3.5 text-gray-400 ml-auto flex-shrink-0 transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
+          className={`w-3.5 h-3.5 text-gray-400 dark:text-gray-500 ml-auto flex-shrink-0 transition-transform duration-150 ${open ? 'rotate-180' : ''}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -146,7 +146,7 @@ function ClauseRow({ clause }: { clause: Clause }) {
         </svg>
       </button>
       {open && (
-        <p className="text-xs text-gray-500 leading-relaxed pl-2 pb-2">
+        <p className="text-xs text-gray-500 dark:text-gray-400 leading-relaxed pl-2 pb-2">
           {clause.summary}
         </p>
       )}
@@ -172,13 +172,13 @@ export default function AgentReasoning({ result }: { result: any }) {
   const greenCount = clauses.filter((c) => c.riskLevel === 'green').length;
 
   return (
-    <div className="rounded-xl border border-gray-200 bg-white overflow-hidden">
+    <div className="rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-800 overflow-hidden">
       {/* ── Collapsible header ── */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between px-5 py-4 hover:bg-gray-50 dark:hover:bg-slate-700 transition-colors"
       >
-        <span className="text-sm font-semibold text-gray-800">
+        <span className="text-sm font-semibold text-gray-800 dark:text-gray-200">
           How the Agent Analyzed This
         </span>
         <ChevronDown open={isOpen} />
@@ -197,20 +197,20 @@ export default function AgentReasoning({ result }: { result: any }) {
 
             {/* Right column: content card */}
             <div className="flex-1 pb-5">
-              <div className="bg-gray-50 rounded-xl p-4">
-                <h4 className="text-sm font-semibold text-gray-900 mb-2">
+              <div className="bg-gray-50 dark:bg-slate-700 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Document Classification
                 </h4>
                 <div className="flex items-center gap-2 mb-2">
                   <DocumentIcon />
-                  <span className="text-sm font-medium text-gray-800">{docType}</span>
+                  <span className="text-sm font-medium text-gray-800 dark:text-gray-200">{docType}</span>
                   <span
                     className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${overallRiskBadge[risk]}`}
                   >
                     {overallRiskLabel[risk]}
                   </span>
                 </div>
-                <p className="text-xs text-gray-500">
+                <p className="text-xs text-gray-500 dark:text-gray-400">
                   Identified as <strong>{docType}</strong> with{' '}
                   <strong>{overallRiskLabel[risk]}</strong> overall risk.
                 </p>
@@ -222,17 +222,17 @@ export default function AgentReasoning({ result }: { result: any }) {
           <div className="flex gap-4">
             <div className="flex flex-col items-center">
               <StepCircle number={2} />
-              <div className="w-0.5 flex-1 bg-blue-400 my-1" />
+              <div className="w-0.5 flex-1 bg-blue-400 dark:bg-gray-600 my-1" />
             </div>
 
             <div className="flex-1 pb-5">
-              <div className="bg-gray-50 rounded-xl p-4">
-                <h4 className="text-sm font-semibold text-gray-900 mb-2">
+              <div className="bg-gray-50 dark:bg-slate-700 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Clause Extraction &amp; Risk Assessment
                 </h4>
 
                 {/* Summary text */}
-                <p className="text-xs text-gray-500 mb-3">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   Extracted <strong>{clauses.length}</strong> clauses:{' '}
                   <span className="text-red-600 font-semibold">{redCount}</span> high risk,{' '}
                   <span className="text-amber-600 font-semibold">{amberCount}</span> caution,{' '}
@@ -244,15 +244,15 @@ export default function AgentReasoning({ result }: { result: any }) {
 
                 {/* Legend */}
                 <div className="flex gap-4 mt-2 mb-3">
-                  <span className="flex items-center gap-1 text-[10px] text-gray-500">
+                  <span className="flex items-center gap-1 text-[10px] text-gray-500 dark:text-gray-400">
                     <span className="w-2 h-2 rounded-full bg-red-500 inline-block" />
                     High Risk ({redCount})
                   </span>
-                  <span className="flex items-center gap-1 text-[10px] text-gray-500">
+                  <span className="flex items-center gap-1 text-[10px] text-gray-500 dark:text-gray-400">
                     <span className="w-2 h-2 rounded-full bg-amber-400 inline-block" />
                     Caution ({amberCount})
                   </span>
-                  <span className="flex items-center gap-1 text-[10px] text-gray-500">
+                  <span className="flex items-center gap-1 text-[10px] text-gray-500 dark:text-gray-400">
                     <span className="w-2 h-2 rounded-full bg-green-500 inline-block" />
                     Low Risk ({greenCount})
                   </span>
@@ -260,7 +260,7 @@ export default function AgentReasoning({ result }: { result: any }) {
 
                 {/* Clause list */}
                 {clauses.length > 0 && (
-                  <div className="divide-y divide-gray-100">
+                  <div className="divide-y divide-gray-100 dark:divide-gray-600">
                     {clauses.map((clause, i) => (
                       <ClauseRow key={i} clause={clause} />
                     ))}
@@ -277,12 +277,12 @@ export default function AgentReasoning({ result }: { result: any }) {
             </div>
 
             <div className="flex-1">
-              <div className="bg-gray-50 rounded-xl p-4">
-                <h4 className="text-sm font-semibold text-gray-900 mb-2">
+              <div className="bg-gray-50 dark:bg-slate-700 rounded-xl p-4">
+                <h4 className="text-sm font-semibold text-gray-900 dark:text-gray-100 mb-2">
                   Gap Analysis
                 </h4>
 
-                <p className="text-xs text-gray-500 mb-3">
+                <p className="text-xs text-gray-500 dark:text-gray-400 mb-3">
                   Identified <strong>{gaps.length}</strong> missing standard
                   {gaps.length === 1 ? ' clause' : ' clauses'}.
                 </p>
@@ -302,11 +302,11 @@ export default function AgentReasoning({ result }: { result: any }) {
                           {gap.importance || '—'}
                         </span>
                         <div>
-                          <span className="text-gray-800 font-medium text-xs">
+                          <span className="text-gray-800 dark:text-gray-200 font-medium text-xs">
                             {gap.clause}
                           </span>
                           {gap.suggestion && (
-                            <p className="text-[11px] text-gray-500 mt-0.5 leading-relaxed">
+                            <p className="text-[11px] text-gray-500 dark:text-gray-400 mt-0.5 leading-relaxed">
                               {gap.suggestion}
                             </p>
                           )}
@@ -315,7 +315,7 @@ export default function AgentReasoning({ result }: { result: any }) {
                     ))}
                   </ul>
                 ) : (
-                  <p className="text-xs text-gray-400 italic">
+                  <p className="text-xs text-gray-400 dark:text-gray-500 italic">
                     No missing clauses detected.
                   </p>
                 )}
