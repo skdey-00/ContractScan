@@ -3,6 +3,7 @@
 import React, { useCallback } from 'react';
 import RiskCard from './RiskCard';
 import ScoreGauge from './ScoreGauge';
+import ShareableReport from './ShareableReport';
 
 interface Clause {
   title: string;
@@ -52,7 +53,7 @@ function isValidResult(result: any): result is AnalysisResult {
   );
 }
 
-export default function RiskReport({ result }: { result: any }) {
+export default function RiskReport({ result, contractText = '' }: { result: any; contractText?: string }) {
   // ── Download report as JSON ──────────────────────────────────────
   const handleDownload = useCallback(() => {
     const blob = new Blob([JSON.stringify(result, null, 2)], { type: 'application/json' });
@@ -191,7 +192,7 @@ export default function RiskReport({ result }: { result: any }) {
       </div>
 
       {/* ── Stats Bar ────────────────────────────────────────────── */}
-      <div className="grid grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="flex items-center gap-2 rounded-lg bg-red-50 border border-red-100 px-3 py-2.5">
           <span className="w-3 h-3 rounded-full bg-red-500 flex-shrink-0" />
           <div>
@@ -276,7 +277,7 @@ export default function RiskReport({ result }: { result: any }) {
       )}
 
       {/* ── Download buttons ─────────────────────────────────────── */}
-      <div className="flex items-center gap-3 pt-2">
+      <div className="flex flex-wrap items-center gap-3 pt-2">
         <button
           onClick={handleDownloadText}
           className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700"
@@ -295,6 +296,7 @@ export default function RiskReport({ result }: { result: any }) {
           </svg>
           Export JSON
         </button>
+        <ShareableReport result={result} contractText={contractText} />
       </div>
 
       {/* ── Empty state ──────────────────────────────────────────── */}

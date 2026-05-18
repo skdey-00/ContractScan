@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 interface ScoreGaugeProps {
   score: number; // 0–100
@@ -25,12 +25,20 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
   const colors = getScoreColor(clamped);
   const label = getScoreLabel(clamped);
 
+  // Animate from 0 to target on mount
+  const [displayScore, setDisplayScore] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setDisplayScore(clamped), 50);
+    return () => clearTimeout(timer);
+  }, [clamped]);
+
   // SVG arc parameters
   const radius = 58;
   const strokeWidth = 10;
   const centre = 70;
   const circumference = Math.PI * radius; // half-circle
-  const progress = (clamped / 100) * circumference;
+  const progress = (displayScore / 100) * circumference;
 
   return (
     <div className="flex flex-col items-center gap-1">
@@ -58,12 +66,12 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
             strokeLinecap="round"
             strokeDasharray={`${circumference} ${circumference}`}
             strokeDashoffset={circumference - progress}
-            className="transition-all duration-700 ease-out"
+            className="transition-all duration-1000 ease-out"
           />
         </svg>
         {/* Score text centred inside the arc */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-1">
-          <span className={`text-3xl font-bold ${colors.text}`}>{clamped}</span>
+          <span className={`text-3xl font-bold ${colors.text}`}>{displayScore}</span>
           <span className="text-xs text-gray-400 -mt-1">/ 100</span>
         </div>
       </div>

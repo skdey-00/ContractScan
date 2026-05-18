@@ -3,10 +3,41 @@
 import { useState, useRef, useCallback, useEffect } from 'react';
 import AgentSteps from '@/components/AgentSteps';
 import RiskReport from '@/components/RiskReport';
+import NegotiationCheatSheet from '@/components/NegotiationCheatSheet';
+import AgentReasoning from '@/components/AgentReasoning';
+import ChatPanel from '@/components/ChatPanel';
+import ThemeToggle from '@/components/ThemeToggle';
+import ContractComparison from '@/components/ContractComparison';
+import ShareableReport, { decodeShareableData } from '@/components/ShareableReport';
 import { extractTextFromPDF } from '@/lib/pdfExtractor';
 
+// ── Back to Top floating button ──────────────────────────────────
+function BackToTop() {
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setVisible(window.scrollY > 400);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      aria-label="Back to top"
+      className="fixed bottom-6 right-6 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-blue-600 text-white shadow-lg transition-transform hover:scale-110 hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+    >
+      <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M5 15l7-7 7 7" />
+      </svg>
+    </button>
+  );
+}
+
 // ── Hero / Landing Section ────────────────────────────────────────
-function Hero({ onGetStarted }: { onGetStarted: () => void }) {
+function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo: () => void }) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 text-white">
       {/* Decorative background shapes */}
@@ -50,7 +81,7 @@ function Hero({ onGetStarted }: { onGetStarted: () => void }) {
               Upload Your Contract
             </button>
             <button
-              onClick={onGetStarted}
+              onClick={onTryDemo}
               className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Try Demo
@@ -63,7 +94,7 @@ function Hero({ onGetStarted }: { onGetStarted: () => void }) {
               { icon: '🔒', label: 'Private & Secure' },
               { icon: '⚡', label: 'Instant Results' },
               { icon: '📊', label: 'Risk Scoring' },
-              { icon: '🧠', label: 'Plain English' },
+              { icon: '💬', label: 'Chat with AI Agent' },
             ].map((f) => (
               <span
                 key={f.label}
@@ -100,6 +131,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [demoLoaded, setDemoLoaded] = useState(false);
+  const [analyzedText, setAnalyzedText] = useState<string>('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
@@ -109,8 +141,26 @@ export default function Home() {
     mainRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, []);
 
+  const tryDemo = useCallback(() => {
+    fetch('/demo-contract.txt')
+      .then((r) => r.text())
+      .then((t) => {
+        setText(t);
+        setTimeout(() => mainRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
+      })
+      .catch(() => {});
+  }, []);
+
   // ── Demo mode: pre-load contract from ?demo=true ──────────────────
   useEffect(() => {
+    // Check for shared report data in URL hash
+    const sharedData = decodeShareableData();
+    if (sharedData) {
+      setResult(sharedData);
+      setAnalyzedText('');
+      return;
+    }
+
     const params = new URLSearchParams(window.location.search);
     if (params.get('demo') === 'true' && !demoLoaded) {
       fetch('/demo-contract.txt')
@@ -145,6 +195,7 @@ export default function Home() {
     setText('');
     setResult(null);
     setError(null);
+    setAnalyzedText('');
   }, []);
 
   const handleFileUpload = useCallback(
@@ -209,6 +260,7 @@ export default function Home() {
 
       const data = await res.json();
       setResult(data);
+      setAnalyzedText(contractText);
     } catch (err: any) {
       setError(err.message || 'An unexpected error occurred while analysing the contract.');
     } finally {
@@ -223,18 +275,22 @@ export default function Home() {
       <header className="border-b border-gray-200 bg-white relative z-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex items-center gap-3">
           {/* Logo / Icon */}
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-lg">
+          <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-lg">
             CS
           </div>
-          <div>
-            <h1 className="text-xl font-semibold tracking-tight">ContractScan AI</h1>
-            <p className="text-sm text-gray-500">AI‑powered contract analysis for non‑lawyers</p>
+          <div className="min-w-0">
+            <h1 className="text-xl font-semibold tracking-tight truncate">ContractScan AI</h1>
+            <p className="text-sm text-gray-500 truncate">AI‑powered contract analysis for non‑lawyers</p>
+          </div>
+          {/* Theme toggle — absolute top-right */}
+          <div className="ml-auto flex-shrink-0">
+            <ThemeToggle />
           </div>
         </div>
       </header>
 
       {/* ── Hero / Landing Section ────────────────────────────────── */}
-      <Hero onGetStarted={scrollToMain} />
+      <Hero onGetStarted={scrollToMain} onTryDemo={tryDemo} />
 
       {/* ── Main content ───────────────────────────────────────────── */}
       <main ref={mainRef} className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
@@ -314,7 +370,7 @@ export default function Home() {
                 setError(null);
               }}
               placeholder="Or paste contract text here..."
-              className="min-h-[200px] w-full resize-y rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+              className="min-h-[150px] sm:min-h-[200px] w-full resize-y rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
 
             {/* Analyse button */}
@@ -407,7 +463,7 @@ export default function Home() {
 
             {/* Results */}
             {!isLoading && result && (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-semibold text-gray-700">Analysis Complete</h2>
                   <button
@@ -417,8 +473,20 @@ export default function Home() {
                     New Analysis
                   </button>
                 </div>
-                <RiskReport result={result} />
+                <RiskReport result={result} contractText={analyzedText} />
+                <ShareableReport result={result} />
+                <NegotiationCheatSheet result={result} />
+                <AgentReasoning result={result} />
+                {analyzedText && (
+                  <ChatPanel contractText={analyzedText} analysisContext={result} />
+                )}
+                <ContractComparison />
               </div>
+            )}
+
+            {/* Back to Top floating button */}
+            {result && (
+              <BackToTop />
             )}
 
             {/* Empty / placeholder state */}

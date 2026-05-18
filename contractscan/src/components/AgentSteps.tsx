@@ -67,10 +67,9 @@ export default function AgentSteps({ isLoading, currentStep }: AgentStepsProps) 
                 isComplete
                   ? 'border-green-500 bg-green-500'
                   : isActive
-                  ? 'border-blue-500 bg-blue-50 animate-spin'
+                  ? 'border-blue-500 bg-blue-50 animate-pulse'
                   : 'border-gray-300 bg-gray-100'
               }`}
-              style={isActive ? { animationDuration: '2s' } : undefined}
             >
               {isComplete ? (
                 <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={3}>

@@ -234,6 +234,26 @@
 - POST no question --> 400 PASS
 - Feature pill "Chat with AI Agent" visible in hero
 - Build passes, deployed to https://contractscan-eight.vercel.app
+
+### Day 5d -- Polish & Full-Scope Features Round 2: COMPLETED
+
+| Feature | Type | Status |
+|---|---|---|
+| Contract Comparison (side-by-side diff) | Major feature | DONE |
+| Shareable Report Link (base64 URL hash) | Sharing | DONE |
+| Mobile Responsive Polish + BackToTop | Polish | DONE |
+| Dark Mode Toggle | Polish | DONE |
+
+**New/modified files:**
+- `src/components/ContractComparison.tsx` -- Full comparison tool (two text inputs, analyze each, client-side diff with score comparison, clause-by-clause change tracking, gap resolution detection)
+- `src/components/ShareableReport.tsx` -- Share button with base64 URL encoding, clipboard copy, toast notification
+- `src/components/ThemeToggle.tsx` -- Dark/light mode toggle with localStorage persistence
+- `src/app/page.tsx` -- Added all new components, mobile responsive fixes, BackToTop button
+- `src/components/RiskReport.tsx` -- ShareableReport wired in, flex-wrap on buttons
+- `src/app/globals.css` -- Added fade-in animation for toast
+
+**Component count:** 11 total
+- AgentSteps, RiskCard, RiskReport, ScoreGauge, NegotiationCheatSheet, AgentReasoning, ChatPanel, ContractComparison, ShareableReport, ThemeToggle, BackToTop (inline)
    165|
    166|| Phase | Task | Status | Notes |
    167||---|---|---|---|

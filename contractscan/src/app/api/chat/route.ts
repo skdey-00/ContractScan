@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Groq from 'groq-sdk';
-import { SYSTEM_PROMPT } from '@/lib/prompts';
 
 const groq = new Groq(); // Uses GROQ_API_KEY from env
+
+const CHAT_SYSTEM_PROMPT = `You are ContractScan AI assistant. The user has already analyzed a contract. Answer their follow-up questions about it. Be concise, specific, reference actual clauses/numbers from the contract. If they ask about something not in the contract, say so. Never give formal legal advice. Always say 'This is not legal advice.' at the end.`;
 
 // Only POST is allowed
 export async function GET() {
@@ -25,43 +26,59 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { text } = body;
+    const { contractText, question, analysisContext, chatHistory } = body;
 
-    if (!text || typeof text !== 'string') {
+    // Validate required fields
+    if (!contractText || typeof contractText !== 'string') {
       return NextResponse.json(
         { error: 'Contract text is required.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length < 100) {
+    if (!question || typeof question !== 'string') {
       return NextResponse.json(
-        { error: 'Contract text must be at least 100 characters. Please provide the full contract text.' },
+        { error: 'Question is required.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length > 200000) {
+    if (question.trim().length > 500) {
       return NextResponse.json(
-        { error: 'The document is too long. Please provide a contract under 200,000 characters.' },
+        { error: 'Question must be 500 characters or less.' },
         { status: 400 },
       );
     }
+
+    // Build messages array
+    const messages: Array<{ role: 'system' | 'user' | 'assistant'; content: string }> = [
+      {
+        role: 'system',
+        content: CHAT_SYSTEM_PROMPT,
+      },
+    ];
+
+    // Add chat history if provided
+    if (Array.isArray(chatHistory)) {
+      for (const msg of chatHistory) {
+        if (msg.role === 'user' || msg.role === 'assistant') {
+          messages.push({ role: msg.role, content: String(msg.content) });
+        }
+      }
+    }
+
+    // Add the current user question with contract context
+    const contractExcerpt = contractText.slice(0, 3000);
+    messages.push({
+      role: 'user',
+      content: `Contract text for reference:\n${contractExcerpt}\n\nQuestion: ${question.trim()}`,
+    });
 
     const chatCompletion = await groq.chat.completions.create({
       model: 'llama-3.3-70b-versatile',
-      max_tokens: 8192,
-      temperature: 0.2,
-      messages: [
-        {
-          role: 'system',
-          content: SYSTEM_PROMPT,
-        },
-        {
-          role: 'user',
-          content: `Analyze this contract:\n\n${text}`,
-        },
-      ],
+      max_tokens: 2048,
+      temperature: 0.3,
+      messages,
     });
 
     const rawOutput = chatCompletion.choices[0]?.message?.content?.trim();
@@ -73,45 +90,29 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Try to parse as JSON
-    let parsed: any;
+    // Try to parse JSON from the response (handle code fences)
+    let answer: string = rawOutput;
     try {
-      // Handle potential markdown code fences wrapping the JSON
       let jsonStr = rawOutput;
       if (jsonStr.startsWith('```')) {
         jsonStr = jsonStr
           .replace(/^```(?:json)?\s*\n?/, '')
           .replace(/\n?```\s*$/, '');
       }
-      parsed = JSON.parse(jsonStr);
+      const parsed = JSON.parse(jsonStr);
+      if (typeof parsed === 'object' && parsed.answer) {
+        answer = parsed.answer;
+      }
     } catch {
-      // If the AI didn't return valid JSON, return the raw text as a fallback
-      return NextResponse.json({
-        documentType: 'Raw Analysis',
-        overallRisk: 'medium',
-        clauses: [],
-        gapAnalysis: [],
-        _rawOutput: rawOutput,
-      });
+      // Not JSON — use raw text as answer
     }
 
-    // Validate the structure has the minimum required fields
-    if (!parsed.documentType && !parsed.clauses && !parsed.gapAnalysis) {
-      return NextResponse.json({
-        documentType: 'Raw Analysis',
-        overallRisk: parsed.overallRisk || 'medium',
-        clauses: [],
-        gapAnalysis: [],
-        _rawOutput: rawOutput,
-      });
-    }
-
-    return NextResponse.json(parsed);
+    return NextResponse.json({ answer });
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : 'An unexpected error occurred.';
 
-    console.error('[/api/analyze] Error:', error);
+    console.error('[/api/chat] Error:', error);
 
     // Handle rate limit errors gracefully
     if (message.includes('rate limit') || message.includes('429') || message.includes('overloaded') || message.includes('capacity')) {
@@ -130,7 +131,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Analysis failed. Please try again.' },
+      { error: 'Chat request failed. Please try again.' },
       { status: 500 },
     );
   }
