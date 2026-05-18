@@ -664,3 +664,5 @@ Do a final live browser test. Draft GDoc submission content.
 *Read this before every build session to reorient.*
 
 You are building ContractScan AI — an AI agent that reads any contract and tells a non-lawyer what they're agreeing to, what's risky, and what's missing. The agent runs three reasoning steps: document type identification, clause-by-clause risk assessment, and gap analysis. Input is a pasted contract or uploaded PDF. Output is a structured risk report with colour-coded cards. The demo is pre-loaded with a rental agreement. The pitch opens with "every person in this room has signed something they didn't read" and closes with a ₹180 crore ARR market sizing for Vinod. The tool must be live on Vercel, documented on GitHub, and submitted in a GDoc before May 29 at 1:00pm EDT. 46 participants. Two criteria. One winner.
+
+API key: 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
