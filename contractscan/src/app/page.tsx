@@ -39,7 +39,7 @@ function BackToTop() {
 // ── Hero / Landing Section ────────────────────────────────────────
 function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo: () => void }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 text-white">
+    <section className="relative overflow-hidden bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-900 text-white animate-gradient-x">
       {/* Decorative background shapes */}
       <div className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-white/5 blur-3xl" />
@@ -50,13 +50,13 @@ function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo
       <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28 lg:py-36">
         <div className="flex flex-col items-center text-center gap-8">
           {/* Badge */}
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide backdrop-blur-sm border border-white/10">
+          <span className="animate-fade-in-up inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-1.5 text-xs font-medium tracking-wide backdrop-blur-sm border border-white/10">
             <span className="h-1.5 w-1.5 rounded-full bg-green-400 animate-pulse" />
             AI-Powered Contract Intelligence
           </span>
 
           {/* Headline */}
-          <h2 className="max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
+          <h2 className="animate-fade-in-up delay-75 max-w-3xl text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight">
             Understand Any Contract{' '}
             <span className="bg-gradient-to-r from-yellow-300 to-amber-400 bg-clip-text text-transparent">
               in Seconds
@@ -64,16 +64,16 @@ function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo
           </h2>
 
           {/* Subtitle */}
-          <p className="max-w-2xl text-lg sm:text-xl text-blue-100 leading-relaxed">
+          <p className="animate-fade-in-up delay-150 max-w-2xl text-lg sm:text-xl text-blue-100 leading-relaxed">
             Upload a contract and get instant, plain-English risk analysis.
             No legal jargon. No hourly fees. Just clarity.
           </p>
 
           {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-2">
+          <div className="animate-fade-in-up delay-200 flex flex-col sm:flex-row gap-4 mt-2">
             <button
               onClick={onGetStarted}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-blue-700 shadow-lg shadow-blue-900/30 transition-transform hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-8 py-3.5 text-sm font-bold text-blue-700 shadow-lg shadow-blue-900/25 transition-transform hover:scale-105 hover:shadow-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
@@ -82,14 +82,14 @@ function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo
             </button>
             <button
               onClick={onTryDemo}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-colors hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/25 bg-white/10 px-8 py-3.5 text-sm font-semibold text-white backdrop-blur-sm transition-all duration-150 hover:bg-white/20 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               Try Demo
             </button>
           </div>
 
           {/* Feature pills */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-blue-200">
+          <div className="animate-fade-in-up delay-300 mt-8 flex flex-wrap items-center justify-center gap-4 text-sm text-blue-200">
             {[
               { icon: '🔒', label: 'Private & Secure' },
               { icon: '⚡', label: 'Instant Results' },
@@ -110,7 +110,7 @@ function Hero({ onGetStarted, onTryDemo }: { onGetStarted: () => void; onTryDemo
       {/* Bottom wave separator */}
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
         <svg
-          className="relative block w-full h-12 sm:h-16"
+          className="relative block w-full h-16 sm:h-20"
           viewBox="0 0 1440 80"
           preserveAspectRatio="none"
         >
@@ -272,7 +272,7 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col bg-white text-gray-900 dark:bg-slate-900 dark:text-gray-100">
       {/* ── Header ─────────────────────────────────────────────────── */}
-      <header className="border-b border-gray-200 bg-white relative z-10 dark:border-gray-700 dark:bg-slate-900">
+      <header className="sticky top-0 z-50 border-b border-gray-200/60 bg-white/80 dark:border-gray-700/60 dark:bg-slate-900/80 glass">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex items-center gap-3">
           {/* Logo / Icon */}
           <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white font-bold text-lg">
@@ -293,7 +293,7 @@ export default function Home() {
       <Hero onGetStarted={scrollToMain} onTryDemo={tryDemo} />
 
       {/* ── Main content ───────────────────────────────────────────── */}
-      <main ref={mainRef} className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+      <main ref={mainRef} className="flex-1 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 py-8 bg-gradient-to-b from-white via-gray-50/30 to-white dark:from-slate-900 dark:via-slate-800/30 dark:to-slate-900">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* ── LEFT: Input panel ──────────────────────────────────── */}
           <section className="flex flex-col gap-6">
@@ -309,14 +309,14 @@ export default function Home() {
               onDragLeave={handleDragLeave}
               onDrop={handleDrop}
               className={`
-                relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed
-                px-6 py-10 cursor-pointer transition-colors
+                animate-fade-in-up relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed
+                px-6 py-14 cursor-pointer transition-all duration-200 hover:scale-[1.01]
                 ${
                   isDragging
                     ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30'
                     : file
                       ? 'border-green-400 bg-green-50 dark:bg-green-900/30 dark:border-green-600'
-                      : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:bg-gray-100 dark:border-gray-600 dark:bg-slate-800 dark:hover:border-gray-500 dark:hover:bg-slate-700'
+                      : 'border-gray-200 bg-gray-50 hover:border-gray-400 hover:bg-gradient-to-br hover:from-gray-50 hover:to-blue-50/30 dark:border-gray-600 dark:bg-slate-800 dark:hover:border-gray-500 dark:hover:bg-slate-700'
                 }
               `}
             >
@@ -330,7 +330,7 @@ export default function Home() {
 
               {/* Icon */}
               <svg
-                className="mb-3 h-10 w-10 text-gray-400"
+                className="mb-4 h-12 w-12 text-gray-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -370,7 +370,7 @@ export default function Home() {
                 setError(null);
               }}
               placeholder="Or paste contract text here..."
-              className="min-h-[150px] sm:min-h-[200px] w-full resize-y rounded-xl border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-100 dark:placeholder-gray-500 dark:focus:border-blue-400 dark:focus:ring-blue-400"
+              className="min-h-[150px] sm:min-h-[200px] w-full resize-y rounded-xl border border-gray-200 bg-gray-50 px-5 py-4 text-sm text-gray-900 placeholder:text-gray-400 focus:ring-2 focus:ring-blue-500/20 focus:border-blue-400 focus:outline-none dark:border-gray-600 dark:bg-slate-800 dark:text-gray-100 dark:placeholder:text-gray-500 dark:focus:border-blue-400 dark:focus:ring-blue-400/20"
             />
 
             {/* Analyse button */}
@@ -378,7 +378,7 @@ export default function Home() {
               <button
                 onClick={handleAnalyze}
                 disabled={!hasInput || isLoading}
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-50"
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 px-8 py-3.5 text-sm font-semibold text-white shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-150 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100"
               >
                 {isLoading ? (
                   <>
@@ -415,7 +415,7 @@ export default function Home() {
                       .then((t) => setText(t))
                       .catch(() => {});
                   }}
-                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700"
+                  className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-medium text-gray-600 transition-all duration-150 hover:bg-gray-50/80 dark:border-gray-600 dark:bg-slate-800 dark:text-gray-300 dark:hover:bg-slate-700/80"
                 >
                   Load Demo Contract
                 </button>
@@ -430,14 +430,14 @@ export default function Home() {
           <section className="flex flex-col">
             {/* Error */}
             {error && (
-              <div className="mb-4 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-400">
+              <div className="mb-4 rounded-xl border border-red-200 border-l-4 border-l-red-500 bg-red-50 px-4 py-3 text-sm text-red-700 dark:border-red-800 dark:bg-red-900/30 dark:text-red-400">
                 <span className="font-medium">Error:</span> {error}
               </div>
             )}
 
             {/* Loading spinner */}
             {isLoading && (
-              <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
+              <div className="animate-fade-in-up flex flex-col items-center justify-center gap-4 py-24 text-center">
                 <svg
                   className="h-12 w-12 animate-spin text-blue-600"
                   viewBox="0 0 24 24"
@@ -457,13 +457,13 @@ export default function Home() {
                     d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
                   />
                 </svg>
-                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">Analysing your contract…</p>
+                <p className="animate-pulse text-sm font-medium text-gray-600 dark:text-gray-400">Analysing your contract…</p>
               </div>
             )}
 
             {/* Results */}
             {!isLoading && result && (
-              <div className="space-y-4">
+              <div className="animate-fade-in-up space-y-4">
                 <div className="flex items-center justify-between">
                   <h2 className="text-sm font-semibold text-gray-700 dark:text-gray-300">Analysis Complete</h2>
                   <button
@@ -473,14 +473,14 @@ export default function Home() {
                     New Analysis
                   </button>
                 </div>
-                <RiskReport result={result} contractText={analyzedText} />
-                <ShareableReport result={result} />
-                <NegotiationCheatSheet result={result} />
-                <AgentReasoning result={result} />
+                <div className="animate-fade-in-up delay-75"><RiskReport result={result} contractText={analyzedText} /></div>
+                <div className="animate-fade-in-up delay-150"><ShareableReport result={result} /></div>
+                <div className="animate-fade-in-up delay-200"><NegotiationCheatSheet result={result} /></div>
+                <div className="animate-fade-in-up delay-300"><AgentReasoning result={result} /></div>
                 {analyzedText && (
-                  <ChatPanel contractText={analyzedText} analysisContext={result} />
+                  <div className="animate-fade-in-up delay-500"><ChatPanel contractText={analyzedText} analysisContext={result} /></div>
                 )}
-                <ContractComparison />
+                <div className="animate-fade-in-up delay-500"><ContractComparison /></div>
               </div>
             )}
 
@@ -491,9 +491,9 @@ export default function Home() {
 
             {/* Empty / placeholder state */}
             {!isLoading && !result && !error && (
-              <div className="flex flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-gray-300 bg-gray-50 px-6 py-24 text-center dark:border-gray-600 dark:bg-slate-800/50">
+              <div className="flex flex-col items-center justify-center gap-4 rounded-xl border border-dashed border-gray-200 bg-gradient-to-b from-gray-50 to-white px-6 py-24 text-center dark:border-gray-700 dark:from-slate-800/50 dark:to-slate-800/30">
                 <svg
-                  className="h-16 w-16 text-gray-300 dark:text-gray-500"
+                  className="h-16 w-16 text-gray-300 dark:text-gray-600"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -515,7 +515,7 @@ export default function Home() {
       </main>
 
       {/* ── Footer ─────────────────────────────────────────────────── */}
-      <footer className="border-t border-gray-200 py-4 text-center text-xs text-gray-400 dark:border-gray-700 dark:text-gray-500">
+      <footer className="border-t border-gray-200/60 py-6 text-center text-xs text-gray-400 dark:border-gray-700/60 dark:text-gray-500">
         ContractScan AI &mdash; for educational purposes only. Not legal advice.
       </footer>
     </div>
