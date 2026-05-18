@@ -1,0 +1,84 @@
+NON-DISCLOSURE AGREEMENT
+
+This Non-Disclosure Agreement ("Agreement") is entered into as of January 15, 2026 (the "Effective Date"), by and between:
+
+NovaTech Solutions Inc., a Delaware corporation with its principal place of business at 450 Innovation Drive, Suite 300, Austin, TX 78701 ("Disclosing Party"),
+and
+James Whitfield, an independent contractor residing at 782 Maple Street, Portland, OR 97201 ("Receiving Party").
+
+1. PURPOSE
+
+The Disclosing Party possesses certain confidential and proprietary information. The Receiving Party desires to receive access to such information solely for the purpose of evaluating a potential business relationship related to the development of a machine learning analytics platform (the "Purpose").
+
+2. DEFINITION OF CONFIDENTIAL INFORMATION
+
+"Confidential Information" means any and all information, whether written, oral, electronic, or visual, disclosed by the Disclosing Party to the Receiving Party, including but not limited to: (a) trade secrets, algorithms, source code, and technical architecture; (b) business plans, marketing strategies, customer lists, and financial data; (c) product roadmaps, research findings, and development methodologies; (d) any other information that a reasonable person would understand to be confidential given the nature of the information and the circumstances of disclosure.
+
+Confidential Information shall also include any notes, analyses, compilations, studies, or other documents prepared by the Receiving Party that contain, reflect, or are derived from any Confidential Information.
+
+3. OBLIGATIONS OF RECEIVING PARTY
+
+The Receiving Party agrees to:
+(a) Hold all Confidential Information in strict confidence and take all reasonable precautions to protect such information;
+(b) Not disclose any Confidential Information to any third party without the prior written consent of the Disclosing Party;
+(c) Use the Confidential Information solely for the Purpose described herein and for no other purpose;
+(d) Limit access to Confidential Information to those employees, agents, or advisors who have a genuine need to know and who are bound by confidentiality obligations no less restrictive than those contained herein;
+(e) Promptly notify the Disclosing Party of any unauthorized use or disclosure of Confidential Information.
+
+4. EXCLUSIONS
+
+Confidential Information does not include information that: (a) is or becomes publicly available through no fault of the Receiving Party; (b) was known to the Receiving Party prior to disclosure; (c) is independently developed by the Receiving Party without use of the Confidential Information; (d) is rightfully received from a third party without restriction on disclosure.
+
+5. TERM AND DURATION
+
+This Agreement shall commence on the Effective Date and shall remain in effect for a period of two (2) years. Notwithstanding the foregoing, the Receiving Party's obligations of confidentiality and non-use with respect to any Confidential Information received hereunder shall survive indefinitely and shall not expire upon termination of this Agreement.
+
+[RISKY CLAUSE: Indefinite survival of all confidentiality obligations regardless of information type is unusually broad and burdensome for the Receiving Party.]
+
+6. RETURN OF MATERIALS
+
+Upon termination of this Agreement or upon written request by the Disclosing Party, the Receiving Party shall promptly return or destroy all Confidential Information, including all copies, notes, and derivatives thereof. The Receiving Party shall provide written certification of compliance within five (5) business days of such request.
+
+7. NO LICENSE OR WARRANTY
+
+Nothing in this Agreement is intended to grant any rights to the Receiving Party under any patent, copyright, trademark, or other intellectual property right of the Disclosing Party, nor shall this Agreement grant the Receiving Party any rights in or to any Confidential Information other than the limited right to review such information for the Purpose.
+
+All Confidential Information is provided "AS IS" without any warranty, express or implied, regarding its accuracy, completeness, or performance.
+
+8. REMEDIES
+
+The Receiving Party acknowledges that any breach or threatened breach of this Agreement may cause irreparable harm to the Disclosing Party for which monetary damages alone would be insufficient. Accordingly, the Disclosing Party shall be entitled to seek injunctive relief, specific performance, and other equitable remedies in addition to all other remedies available at law or in equity.
+
+[RISKY CLAUSE: The Receiving Party hereby agrees to indemnify the Disclosing Party against any and all losses, damages, costs, and expenses (including attorneys' fees) arising from or related to any breach of this Agreement by the Receiving Party, with no cap on liability. This indemnification obligation shall survive termination of this Agreement for a period of five (5) years.]
+
+9. NON-SOLICITATION
+
+During the term of this Agreement and for a period of eighteen (18) months following its termination, the Receiving Party shall not, directly or indirectly, solicit, recruit, hire, or engage any employee, contractor, or consultant of the Disclosing Party, nor shall the Receiving Party solicit or do business with any customer or client of the Disclosing Party that the Receiving Party became aware of through the Disclosing Party's Confidential Information.
+
+[RISKY CLAUSE: An 18-month non-solicitation clause embedded in an NDA is unusual and overly restrictive, especially as it extends to customers and clients with a very broad definition.]
+
+10. GOVERNING LAW AND JURISDICTION
+
+This Agreement shall be governed by and construed in accordance with the laws of the State of Delaware, without regard to its conflict of laws principles. The Receiving Party hereby irrevocably consents to the exclusive jurisdiction and venue of the state and federal courts located in Wilmington, Delaware for any action or proceeding arising out of or relating to this Agreement.
+
+11. MISCELLANEOUS
+
+(a) Entire Agreement: This Agreement constitutes the entire understanding between the parties and supersedes all prior discussions, negotiations, and agreements.
+(b) Amendments: No modification of this Agreement shall be effective unless in writing and signed by both parties.
+(c) Severability: If any provision is found invalid, the remaining provisions shall remain in full force and effect.
+(d) Waiver: Failure to enforce any provision shall not constitute a waiver of such provision.
+(e) Assignment: The Receiving Party may not assign or transfer this Agreement without the prior written consent of the Disclosing Party. The Disclosing Party may assign this Agreement freely.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the date first written above.
+
+DISCLOSING PARTY:
+NovaTech Solutions Inc.
+By: ___________________________
+Name: Sarah Chen
+Title: Chief Executive Officer
+Date: _________________________
+
+RECEIVING PARTY:
+By: ___________________________
+Name: James Whitfield
+Date: _________________________

@@ -1,0 +1,101 @@
+EMPLOYMENT OFFER LETTER
+
+CONFIDENTIAL
+
+March 1, 2026
+
+Ms. Priya Kapoor
+1842 Oak Avenue, Apt 12B
+Seattle, WA 98122
+
+Dear Priya,
+
+On behalf of Orion Software Technologies Inc. (the "Company"), I am pleased to offer you the position of Senior Software Engineer in our Cloud Infrastructure division. This letter sets forth the terms and conditions of your employment.
+
+1. POSITION AND REPORTING
+
+Your title will be Senior Software Engineer. You will report directly to the Vice President of Engineering, Michael Torres. Your primary work location will be the Company's Seattle office at 900 Pine Street, Suite 1400, Seattle, WA 98101. The Company reserves the right to change your reporting structure, title, and work location at its sole discretion.
+
+2. START DATE AND EMPLOYMENT STATUS
+
+Your anticipated start date is April 1, 2026. Your employment with the Company is at-will, meaning that either you or the Company may terminate the employment relationship at any time, with or without cause, and with or without notice.
+
+3. COMPENSATION
+
+(a) Base Salary: You will receive an annual base salary of One Hundred Sixty-Five Thousand Dollars ($165,000.00), payable in accordance with the Company's standard payroll schedule (bi-weekly).
+
+(b) Signing Bonus: You will receive a one-time signing bonus of Twenty Thousand Dollars ($20,000.00), payable within thirty (30) days of your start date. If you voluntarily resign from the Company within twelve (12) months of your start date, you agree to repay the full signing bonus to the Company within thirty (30) days of your departure.
+
+(c) Annual Bonus: You will be eligible for an annual performance bonus of up to 15% of your base salary, subject to the Company's discretion and based on individual and company performance metrics. The Company reserves the right to modify or discontinue the bonus program at any time.
+
+(d) Equity: Subject to approval by the Company's Board of Directors, you will be granted stock options to purchase 10,000 shares of the Company's common stock at a strike price equal to the fair market value on the date of grant. The options will vest over four (4) years with a one-year cliff, subject to your continued employment.
+
+4. BENEFITS
+
+You will be eligible to participate in the Company's benefit programs, including:
+(a) Medical, dental, and vision insurance (employee contribution approximately 20% of premium);
+(b) 401(k) retirement plan with company match up to 4% of base salary;
+(c) Fifteen (15) days of paid time off (PTO) per year, accrued bi-weekly;
+(d) Ten (10) paid company holidays;
+(e) Professional development budget of $3,000 per year;
+(f) Life insurance and short-term/long-term disability coverage.
+
+The Company reserves the right to modify or terminate any benefit plan at any time.
+
+5. PROBATIONARY PERIOD
+
+Your first ninety (90) days of employment shall constitute a probationary period. During this time, the Company will evaluate your performance and cultural fit. The Company may terminate your employment at any time during the probationary period without advance notice and without severance. Your benefits will commence on your start date regardless of the probationary period.
+
+6. CONFIDENTIALITY AND INTELLECTUAL PROPERTY
+
+As a condition of your employment, you will be required to sign the Company's standard Confidentiality and Invention Assignment Agreement (the "CIAA"). Under the CIAA, you agree that all inventions, works of authorship, ideas, and improvements conceived, developed, or reduced to practice during your employment (whether during or outside business hours, and whether using Company resources or not) shall be the exclusive property of the Company.
+
+[RISKY CLAUSE: You acknowledge that all intellectual property created by you during the term of your employment, including but not limited to inventions, software, designs, writings, and ideas, whether related to the Company's business or not, and whether created during business hours or on your own time, shall be the sole and exclusive property of the Company. This includes personal projects, open-source contributions, and creative works wholly unrelated to your job responsibilities.]
+
+7. NON-COMPETE AND NON-SOLICITATION
+
+[RISKY CLAUSE: During your employment and for a period of twenty-four (24) months following the termination of your employment for any reason (whether voluntary or involuntary, with or without cause), you shall not, directly or indirectly:
+(a) Engage in, be employed by, consult for, advise, or render services to any business or entity that develops, manufactures, markets, sells, or provides products or services that are competitive with or substantially similar to those of the Company, anywhere in the world;
+(b) Solicite, recruit, hire, or attempt to solicit, recruit, or hire any employee, contractor, or consultant of the Company;
+(c) Solicit, contact, or do business with any customer, client, vendor, or business partner of the Company with whom you had contact or about whom you acquired confidential information during your employment;
+(d) Encourage any customer, client, vendor, or business partner of the Company to terminate or diminish its relationship with the Company.
+
+For purposes of this provision, "competitive" shall mean any business involved in cloud computing, software-as-a-service (SaaS), enterprise software, data analytics, artificial intelligence, machine learning, or any other business in which the Company is engaged or has plans to engage at the time of your departure.]
+
+8. TERMINATION AND SEVERANCE
+
+(a) Voluntary Resignation: If you resign, you agree to provide fourteen (14) days written notice. The Company may, at its discretion, accept your resignation effective immediately upon notice.
+(b) Termination Without Cause: If the Company terminates your employment without cause, you will be entitled to:
+   - Two (2) weeks of base salary as severance;
+   - Accrued but unused PTO;
+   - COBRA continuation coverage for thirty (30) days.
+   Severance is contingent upon your execution of a general release of claims in favor of the Company.
+(c) Termination for Cause: If the Company terminates your employment for cause (including but not limited to misconduct, poor performance, violation of Company policies, or breach of this Agreement), you will not be entitled to any severance or notice pay.
+
+9. ARBITRATION
+
+Any dispute, claim, or controversy arising out of or relating to your employment, including but not limited to claims of discrimination, harassment, wrongful termination, and wage claims, shall be resolved exclusively through final and binding arbitration administered by the American Arbitration Association in Seattle, Washington. You waive your right to a jury trial and to participate in any class action or collective action.
+
+10. GOVERNING LAW
+
+This offer letter shall be governed by the laws of the State of Washington.
+
+11. ACCEPTANCE
+
+Please indicate your acceptance of this offer by signing and returning a copy of this letter by March 15, 2026. This offer will expire if not accepted by that date.
+
+We are excited about the possibility of you joining the Orion team and look forward to your contributions.
+
+Sincerely,
+
+Rachel Nakamura
+Chief People Officer
+Orion Software Technologies Inc.
+
+ACCEPTANCE
+
+I accept the offer of employment as set forth above and agree to all terms and conditions contained in this letter.
+
+Signature: ___________________________
+Name: Priya Kapoor
+Date: _________________________

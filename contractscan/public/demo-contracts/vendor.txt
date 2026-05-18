@@ -1,0 +1,135 @@
+VENDOR SUPPLY AGREEMENT
+
+This Vendor Supply Agreement ("Agreement") is entered into as of March 1, 2026, by and between:
+
+GreenLeaf Manufacturing Corp., an Ohio corporation with its principal place of business at 3400 Industrial Parkway, Columbus, OH 43219 ("Buyer"),
+and
+Summit Components International Ltd., a British Columbia corporation with offices at 820 Burrard Street, Suite 1100, Vancouver, BC V6Z 2J7, Canada ("Supplier").
+
+RECITALS
+
+WHEREAS, the Buyer manufactures commercial food processing equipment and requires a steady supply of stainless steel components, electronic control modules, and related parts;
+WHEREAS, the Supplier represents that it has the capability to manufacture and supply such components;
+WHEREAS, the parties wish to establish the terms and conditions governing the purchase and supply of such components;
+
+NOW, THEREFORE, the parties agree as follows:
+
+1. SCOPE AND DELIVERABLES
+
+1.1 The Supplier agrees to manufacture and deliver to the Buyer the components described in the attached Exhibit A (the "Products"), in accordance with the specifications, quantities, and delivery schedule set forth therein.
+
+1.2 The Buyer may, from time to time, issue purchase orders ("Purchase Orders") specifying the quantities, delivery dates, and shipping instructions for the Products. Each Purchase Order shall reference this Agreement and shall be subject to the terms and conditions herein.
+
+1.3 The Supplier shall manufacture the Products in accordance with: (a) the specifications provided by the Buyer; (b) all applicable industry standards, including ISO 9001 quality management standards; (c) all applicable federal, state, and local laws and regulations, including FDA food safety requirements where applicable.
+
+2. PRICING
+
+2.1 The prices for the Products shall be as set forth in Exhibit A (the "Prices").
+
+2.2 The Prices are fixed for the first twelve (12) months of this Agreement. Thereafter, the Supplier may request a price adjustment no more than once per year, provided that any increase shall not exceed five percent (5%) of the then-current Prices and shall be supported by documented evidence of increased raw material or labor costs.
+
+2.3 All Prices are FOB the Supplier's facility in Vancouver, BC. Prices do not include shipping, insurance, customs duties, or taxes, which shall be the responsibility of the Buyer.
+
+3. PAYMENT SCHEDULE
+
+3.1 The Buyer shall pay all undisputed invoices within sixty (60) days of receipt of a valid invoice.
+
+3.2 Invoices shall include: (a) the Purchase Order number; (b) a description and quantity of Products delivered; (c) applicable unit prices and total amounts; (d) shipping documentation.
+
+3.3 The Buyer may deduct or set off against any amounts owed to the Supplier any amounts the Buyer claims are due from the Supplier under this Agreement or any other agreement between the parties.
+
+4. DELIVERY
+
+4.1 The Supplier shall deliver the Products in accordance with the delivery dates specified in each Purchase Order.
+
+4.2 Time is of the essence with respect to delivery dates. Late deliveries shall entitle the Buyer to: (a) require expedited shipping at the Supplier's expense; (b) adjust future Purchase Orders; (c) seek damages for any losses resulting from the delay.
+
+4.3 The Supplier shall notify the Buyer in writing at least fifteen (15) days in advance of any anticipated delay in delivery.
+
+5. QUALITY AND INSPECTION
+
+5.1 The Supplier shall maintain a quality management system compliant with ISO 9001 and shall provide certificates of conformance with each shipment.
+
+5.2 The Buyer shall have the right to inspect all Products within thirty (30) days of receipt. The Buyer may reject any Products that fail to conform to the specifications.
+
+5.3 Rejected Products shall be replaced by the Supplier at no additional cost to the Buyer within fourteen (14) days of rejection notice.
+
+6. WARRANTIES
+
+6.1 The Supplier warrants that the Products shall conform to the specifications set forth in Exhibit A at the time of delivery.
+
+[RISKY CLAUSE: 6.2 The Supplier's warranty under Section 6.1 shall expire thirty (30) days after delivery of the Products to the Buyer. After the thirty (30) day warranty period, the Products are provided "AS IS" without any further warranty, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, or non-infringement.]
+
+[RISKY CLAUSE: 6.3 The Supplier's total warranty liability for any defective Product shall not exceed the purchase price paid by the Buyer for the specific defective unit(s) at issue. Under no circumstances shall the Supplier be liable for any costs of removal, installation, consequential damages, lost production, lost profits, or any other indirect or incidental damages arising from defective Products, regardless of whether the Supplier was advised of the possibility of such damages.]
+
+6.4 The Buyer acknowledges that the Products are designed for general commercial food processing applications and that the Supplier has not made any representations regarding the suitability of the Products for any specific application beyond the specifications in Exhibit A.
+
+7. INDEMNIFICATION
+
+7.1 The Supplier shall indemnify, defend, and hold harmless the Buyer and its officers, directors, employees, and agents from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorneys' fees) arising from: (a) any breach of this Agreement by the Supplier; (b) any claim that the Products infringe the intellectual property rights of any third party; (c) any personal injury or property damage caused by defective Products; (d) any violation of applicable laws or regulations by the Supplier.
+
+7.2 The Buyer shall indemnify the Supplier from and against any claims arising from: (a) the Buyer's misuse of the Products; (b) the Buyer's modification of the Products; (c) the Buyer's failure to follow the Supplier's instructions for installation and use.
+
+8. TERMINATION
+
+8.1 This Agreement shall commence on the Effective Date and continue for an initial term of two (2) years, unless earlier terminated in accordance with this Section.
+
+8.2 Either party may terminate this Agreement for cause if the other party materially breaches any provision and fails to cure such breach within thirty (30) days of receiving written notice specifying the breach.
+
+8.3 The Buyer may terminate this Agreement for convenience upon sixty (60) days written notice to the Supplier.
+
+8.4 Upon termination, the Supplier shall: (a) complete delivery of all Purchase Orders accepted prior to the termination notice; (b) return any Buyer-furnished tooling, molds, or specifications; (c) cooperate with the transition to a new supplier.
+
+8.5 Termination for convenience by the Buyer shall not entitle the Supplier to any compensation for lost profits, unamortized investments, or anticipated future revenues.
+
+9. FORCE MAJEURE
+
+Neither party shall be liable for any failure or delay in performing its obligations under this Agreement due to circumstances beyond its reasonable control, including but not limited to natural disasters, war, terrorism, government actions, labor disputes, supply chain disruptions, or pandemics, provided the affected party gives prompt notice to the other party.
+
+10. CONFIDENTIALITY
+
+Each party agrees to keep confidential all proprietary information of the other party received in connection with this Agreement. Confidential information includes specifications, pricing, business plans, and technical data. This obligation shall survive for a period of three (3) years following termination of this Agreement.
+
+11. INTELLECTUAL PROPERTY
+
+11.1 All specifications, designs, and technical drawings provided by the Buyer remain the exclusive property of the Buyer.
+
+11.2 Any improvements, modifications, or new designs developed specifically for the Buyer's Products shall be the exclusive property of the Buyer.
+
+11.3 The Supplier shall not use the Buyer's intellectual property for any purpose other than fulfilling its obligations under this Agreement.
+
+12. GOVERNING LAW AND DISPUTE RESOLUTION
+
+12.1 This Agreement shall be governed by the laws of the State of Ohio, without regard to its conflict of laws principles.
+
+12.2 Any disputes arising under this Agreement shall first be submitted to good-faith negotiation between senior management of both parties. If the dispute is not resolved within thirty (30) days, either party may initiate arbitration administered by the International Centre for Dispute Resolution (ICDR) in accordance with its International Arbitration Rules. The arbitration shall be conducted in Columbus, Ohio.
+
+12.3 The prevailing party in any arbitration or legal proceeding shall be entitled to recover its reasonable attorneys' fees and costs.
+
+13. GENERAL PROVISIONS
+
+13.1 This Agreement constitutes the entire agreement between the parties and supersedes all prior discussions and agreements.
+
+13.2 No modification of this Agreement shall be effective unless in writing and signed by both parties.
+
+13.3 If any provision is found invalid, the remaining provisions shall remain in full force and effect.
+
+13.4 Neither party may assign this Agreement without the prior written consent of the other party.
+
+13.5 All notices under this Agreement shall be in writing and delivered by certified mail, overnight courier, or email (with confirmation of receipt).
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the date first written above.
+
+BUYER:
+GreenLeaf Manufacturing Corp.
+By: ___________________________
+Name: Robert Engle
+Title: VP of Supply Chain
+Date: _________________________
+
+SUPPLIER:
+Summit Components International Ltd.
+By: ___________________________
+Name: Marcus Liu
+Title: Managing Director
+Date: _________________________

@@ -1,0 +1,104 @@
+FREELANCE WEB DEVELOPMENT CONTRACT
+
+This Freelance Web Development Agreement ("Agreement") is entered into as of February 1, 2026, by and between:
+
+PixelCraft Digital Agency LLC, a California limited liability company with offices at 1200 Market Street, Suite 500, San Francisco, CA 94103 ("Client"),
+and
+Daniel Rivera, an independent web developer ("Freelancer").
+
+1. SCOPE OF WORK
+
+The Freelancer agrees to perform the following services for the Client (the "Services"):
+(a) Design and develop a fully responsive e-commerce website (the "Website") based on the Client's specifications provided in Exhibit A;
+(b) Implement a product catalog with search and filtering functionality;
+(c) Integrate a payment processing system supporting major credit cards and digital wallets;
+(d) Develop a content management system (CMS) allowing the Client to manage products, orders, and customer data;
+(e) Implement user authentication, account management, and order tracking features;
+(f) Ensure cross-browser compatibility with Chrome, Firefox, Safari, and Edge (latest two versions);
+(g) Perform basic search engine optimization (SEO) configuration;
+(h) Provide documentation and basic training on using the CMS.
+
+2. TIMELINE AND MILESTONES
+
+The project shall be completed according to the following schedule:
+(a) Phase 1 — Design & Wireframes: Due February 28, 2026
+(b) Phase 2 — Frontend Development: Due March 31, 2026
+(c) Phase 3 — Backend Development & Integration: Due April 30, 2026
+(d) Phase 4 — Testing, QA & Launch: Due May 15, 2026
+
+The Freelancer shall provide weekly progress reports every Monday by 10:00 AM Pacific Time.
+
+3. COMPENSATION AND PAYMENT
+
+(a) Total Compensation: The total fee for the Services shall be Twelve Thousand Dollars ($12,000.00 USD).
+(b) Payment Schedule:
+   - 25% ($3,000.00) upon signing this Agreement;
+   - 25% ($3,000.00) upon completion of Phase 2;
+   - 25% ($3,000.00) upon completion of Phase 3;
+   - 25% ($3,000.00) upon final delivery and Client acceptance.
+
+(c) Payment Terms: The Client shall make payment within thirty (30) days of receiving a valid invoice for each milestone.
+
+[RISKY CLAUSE: The Client reserves the right to withhold final payment if, in the Client's sole and absolute discretion, the final deliverable does not meet the Client's expectations, regardless of whether the deliverable conforms to the specifications outlined in Exhibit A. In the event of such withholding, the Freelancer shall not be entitled to any compensation for work completed beyond the initial deposit.]
+
+4. REVISIONS
+
+The Freelancer shall provide up to two (2) rounds of revisions per phase at no additional cost. Any revisions beyond the two rounds shall be billed at an hourly rate of One Hundred Dollars ($100.00) per hour.
+
+[RISKY CLAUSE: The Client may request an unlimited number of changes to the scope of work at any time during the project. The Freelancer shall make commercially reasonable efforts to accommodate such changes without additional compensation, provided the changes do not increase the total project scope by more than 40% of the original scope as measured by the Freelancer's good-faith estimate.]
+
+5. INTELLECTUAL PROPERTY
+
+Upon receipt of full payment, the Freelancer assigns to the Client all right, title, and interest in and to the Website, including all source code, design assets, documentation, and derivative works (collectively, the "Work Product"). The Freelancer retains no rights to use, license, or distribute the Work Product.
+
+The Freelancer shall ensure that all third-party components, libraries, and tools used in the development of the Website are properly licensed for the Client's intended commercial use. The Freelancer shall provide a list of all third-party components and their associated licenses upon final delivery.
+
+6. CONFIDENTIALITY
+
+The Freelancer agrees to keep confidential all proprietary information of the Client, including business strategies, customer data, financial information, and any other non-public information disclosed during the course of this engagement. This obligation shall survive for a period of three (3) years following the completion or termination of this Agreement.
+
+7. WARRANTIES AND REPRESENTATIONS
+
+(a) The Freelancer warrants that the Work Product will be original and will not infringe upon the intellectual property rights of any third party.
+(b) The Freelancer warrants that the Website shall be free from material defects in workmanship for a period of thirty (30) days following final delivery (the "Warranty Period").
+(c) During the Warranty Period, the Freelancer shall correct any bugs or defects at no additional cost.
+(d) THE WORK PRODUCT IS PROVIDED "AS IS" AFTER THE WARRANTY PERIOD. THE FREELANCER MAKES NO OTHER WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+
+8. INDEPENDENT CONTRACTOR STATUS
+
+The Freelancer is an independent contractor and not an employee, agent, partner, or joint venturer of the Client. The Freelancer shall be solely responsible for all federal, state, and local taxes, insurance, and other obligations arising from the compensation received under this Agreement. The Freelancer shall not be entitled to any employee benefits provided by the Client.
+
+9. TERMINATION
+
+(a) Either party may terminate this Agreement upon fourteen (14) days written notice.
+(b) The Client may terminate this Agreement immediately for cause if the Freelancer materially breaches any provision of this Agreement and fails to cure such breach within seven (7) days of receiving written notice.
+(c) Upon termination, the Freelancer shall deliver all completed and in-progress Work Product to the Client. The Client shall pay for all work completed up to the date of termination, less any amounts previously paid.
+(d) The Freelancer shall not be entitled to any compensation for work in progress that has not been approved by the Client as a completed milestone.
+
+10. LIMITATION OF LIABILITY
+
+IN NO EVENT SHALL THE CLIENT'S TOTAL LIABILITY UNDER THIS AGREEMENT EXCEED THE TOTAL AMOUNT PAID BY THE CLIENT TO THE FREELANCER. THE CLIENT SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR PUNITIVE DAMAGES.
+
+[RISKY CLAUSE: The Freelancer shall be liable for all losses, damages, costs, and expenses incurred by the Client arising from the Freelancer's performance or non-performance under this Agreement, including but not limited to lost profits, lost business opportunities, and reputational harm, with no limitation on the amount of such liability.]
+
+11. GOVERNING LAW
+
+This Agreement shall be governed by the laws of the State of California. Any disputes arising under this Agreement shall be resolved in the state or federal courts located in San Francisco County, California.
+
+12. ENTIRE AGREEMENT
+
+This Agreement constitutes the entire agreement between the parties and supersedes all prior discussions, negotiations, and agreements, whether written or oral. This Agreement may be amended only in writing signed by both parties.
+
+IN WITNESS WHEREOF, the parties have executed this Agreement as of the date first written above.
+
+CLIENT:
+PixelCraft Digital Agency LLC
+By: ___________________________
+Name: Amanda Torres
+Title: Director of Operations
+Date: _________________________
+
+FREELANCER:
+By: ___________________________
+Name: Daniel Rivera
+Date: _________________________
