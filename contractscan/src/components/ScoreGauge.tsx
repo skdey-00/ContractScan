@@ -7,9 +7,9 @@ interface ScoreGaugeProps {
 }
 
 function getScoreColor(score: number): { stroke: string; text: string; bg: string } {
-  if (score >= 70) return { stroke: '#22c55e', text: 'text-green-600', bg: 'bg-green-50' };
-  if (score >= 40) return { stroke: '#f59e0b', text: 'text-amber-600', bg: 'bg-amber-50' };
-  return { stroke: '#ef4444', text: 'text-red-600', bg: 'bg-red-50' };
+  if (score >= 70) return { stroke: '#22c55e', text: 'text-green-400', bg: 'bg-green-950/40' };
+  if (score >= 40) return { stroke: '#f59e0b', text: 'text-amber-400', bg: 'bg-amber-950/40' };
+  return { stroke: '#ef4444', text: 'text-red-400', bg: 'bg-red-950/40' };
 }
 
 function getScoreLabel(score: number): string {
@@ -53,7 +53,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
           <path
             d={`M ${centre - radius} ${centre} A ${radius} ${radius} 0 0 1 ${centre + radius} ${centre}`}
             fill="none"
-            stroke="#e5e7eb"
+            stroke="#3f3f46"
             strokeWidth={strokeWidth}
             strokeLinecap="round"
           />
@@ -72,7 +72,7 @@ export default function ScoreGauge({ score }: ScoreGaugeProps) {
         {/* Score text centred inside the arc */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-1">
           <span className={`text-3xl font-bold ${colors.text}`}>{displayScore}</span>
-          <span className="text-xs text-gray-400 dark:text-gray-500 -mt-1">/ 100</span>
+          <span className="text-xs text-zinc-500 -mt-1">/ 100</span>
         </div>
       </div>
       <span className={`text-xs font-semibold px-2 py-0.5 rounded-full ${colors.bg} ${colors.text}`}>

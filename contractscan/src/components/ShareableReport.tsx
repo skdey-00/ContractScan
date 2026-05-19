@@ -48,7 +48,7 @@ export default function ShareableReport({ result, contractText = '' }: Shareable
     <>
       <button
         onClick={handleShare}
-        className="inline-flex items-center gap-2 rounded-xl border border-gray-300 dark:border-gray-600 bg-white dark:bg-slate-700 px-4 py-2.5 text-sm font-medium text-gray-600 dark:text-gray-300 transition-colors hover:bg-gray-50 dark:hover:bg-slate-600"
+        className="inline-flex items-center gap-2 rounded-xl border border-zinc-700 dark:border-zinc-600 bg-zinc-900/50 dark:bg-zinc-800 px-4 py-2.5 text-sm font-medium text-zinc-300 dark:text-zinc-300 transition-colors hover:bg-zinc-800 dark:hover:bg-zinc-700"
       >
         <svg
           className="w-4 h-4"
@@ -69,7 +69,7 @@ export default function ShareableReport({ result, contractText = '' }: Shareable
       {/* Toast notification */}
       {showToast && (
         <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 animate-fade-in">
-          <div className="rounded-lg bg-gray-900 dark:bg-gray-800 px-5 py-3 text-sm font-medium text-white shadow-lg">
+          <div className="rounded-lg bg-zinc-900 dark:bg-zinc-800 px-5 py-3 text-sm font-medium text-white shadow-lg">
             {toastMessage}
           </div>
         </div>
