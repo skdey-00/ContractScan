@@ -1,0 +1,122 @@
+{
+  "documentType": "Residential Lease Agreement",
+  "fairnessScore": 30,
+  "overallAssessment": "This lease agreement heavily favours the landlord. Multiple clauses impose significant obligations on the tenant while providing minimal protections. The tenant should negotiate changes to the security deposit, late fees, maintenance responsibilities, and early termination provisions before signing.",
+  "clauses": [
+    {
+      "clauseTitle": "Security Deposit",
+      "clauseText": "Tenant shall pay a security deposit of $5,000 to be held by Landlord for the duration of the lease.",
+      "riskLevel": "red",
+      "riskExplanation": "The security deposit of $5,000 is excessive — many jurisdictions cap deposits at 1-2 months' rent. No interest accrual or return timeline is specified.",
+      "suggestedRewrite": "Tenant shall pay a security deposit equal to one month's rent ($2,500), to be held in a separate interest-bearing account. Landlord shall return the deposit within 30 days of lease termination, minus any itemised deductions for damages beyond normal wear and tear."
+    },
+    {
+      "clauseTitle": "Late Payment Penalty",
+      "clauseText": "If rent is not received by the 3rd of each month, a late fee of $250 will be charged immediately.",
+      "riskLevel": "red",
+      "riskExplanation": "A $250 late fee on $2,500 rent is a 10% penalty, which may exceed legal limits in many jurisdictions. The 3-day grace period is very short.",
+      "suggestedRewrite": "If rent is not received by the 10th of each month, a late fee of $50 or 5% of the monthly rent (whichever is less) will be charged. Tenant shall receive a written notice before any late fee is applied."
+    },
+    {
+      "clauseTitle": "Maintenance Responsibilities",
+      "clauseText": "Tenant shall be responsible for all repairs and maintenance of the premises, including plumbing, electrical, and HVAC systems.",
+      "riskLevel": "red",
+      "riskExplanation": "Shifting ALL maintenance responsibility to the tenant is unusual and potentially unenforceable. Landlords are typically required by law to maintain structural elements and essential systems.",
+      "suggestedRewrite": "Landlord shall be responsible for all structural repairs and maintenance of plumbing, electrical, and HVAC systems. Tenant shall be responsible for minor upkeep and any damage caused by tenant negligence."
+    },
+    {
+      "clauseTitle": "Early Termination",
+      "clauseText": "Tenant may not terminate this lease early under any circumstances. All remaining rent becomes immediately due upon vacating.",
+      "riskLevel": "red",
+      "riskExplanation": "A blanket prohibition on early termination with no mitigation requirement is harsh and may not hold up in court. Many jurisdictions require landlords to mitigate damages.",
+      "suggestedRewrite": "Tenant may terminate this lease early with 60 days' written notice and payment of a termination fee equal to two months' rent. Landlord shall make reasonable efforts to re-let the premises to offset remaining rent obligations."
+    },
+    {
+      "clauseTitle": "Entry Rights",
+      "clauseText": "Landlord may enter the premises at any time without notice for any reason.",
+      "riskLevel": "red",
+      "riskExplanation": "Entry without notice violates tenant privacy rights in virtually every jurisdiction. Most areas require 24-48 hours' notice except in emergencies.",
+      "suggestedRewrite": "Landlord shall provide at least 24 hours' written notice before entering the premises, except in cases of genuine emergency. Entry shall occur during reasonable hours (9am-6pm) and only for legitimate purposes (inspections, repairs, showings)."
+    },
+    {
+      "clauseTitle": "Rent Increase",
+      "clauseText": "Landlord reserves the right to increase rent at any time with 15 days' notice.",
+      "riskLevel": "red",
+      "riskExplanation": "Allowing unlimited rent increases with only 15 days' notice provides no stability for the tenant. In a 12-month lease, rent should be fixed for the term.",
+      "suggestedRewrite": "Rent shall remain fixed for the duration of the lease term. Any rent increase upon renewal shall require 90 days' written notice and shall not exceed the greater of 3% or the local CPI increase."
+    },
+    {
+      "clauseTitle": "Liability and Insurance",
+      "clauseText": "Tenant assumes all liability for injuries occurring on the premises, regardless of cause. Landlord shall not be held liable for any damages.",
+      "riskLevel": "red",
+      "riskExplanation": "A blanket liability waiver for the landlord is likely unenforceable. Landlords cannot contract away negligence liability for conditions they control.",
+      "suggestedRewrite": "Each party shall be responsible for liabilities arising from their own negligence. Landlord shall maintain property insurance. Tenant is encouraged to obtain renter's insurance for personal property."
+    },
+    {
+      "clauseTitle": "Lease Duration",
+      "clauseText": "This lease shall be for a term of 12 months beginning on the move-in date specified above.",
+      "riskLevel": "green",
+      "riskExplanation": "A standard 12-month lease term is normal and reasonable.",
+      "suggestedRewrite": null
+    },
+    {
+      "clauseTitle": "Monthly Rent",
+      "clauseText": "Tenant agrees to pay monthly rent of $2,500, due on the 1st of each month.",
+      "riskLevel": "green",
+      "riskExplanation": "The rent amount and due date are clearly stated, which is standard practice.",
+      "suggestedRewrite": null
+    },
+    {
+      "clauseTitle": "Utilities",
+      "clauseText": "Tenant shall be responsible for all utility payments including electricity, gas, water, and internet.",
+      "riskLevel": "amber",
+      "riskExplanation": "While tenants commonly pay utilities, the clause should specify which utilities exist and clarify that landlord pays for common area utilities in multi-unit buildings.",
+      "suggestedRewrite": "Tenant shall be responsible for electricity, gas, and internet. Landlord shall be responsible for water, sewer, and trash collection. Tenant shall set up utility accounts in their name within 5 days of move-in."
+    },
+    {
+      "clauseTitle": "Pets Policy",
+      "clauseText": "No pets of any kind are permitted on the premises without prior written approval from Landlord.",
+      "riskLevel": "amber",
+      "riskExplanation": "A blanket pet ban with 'approval' is vague — the criteria for approval should be stated. Also, emotional support animals may need to be accommodated under fair housing laws.",
+      "suggestedRewrite": "Tenant may keep up to 2 domestic pets with prior written approval (not to be unreasonably withheld). A pet deposit of $300 shall be required. Reasonable accommodations for service and emotional support animals as required by law."
+    },
+    {
+      "clauseTitle": "Subletting",
+      "clauseText": "Tenant may not sublet or assign the lease without prior written consent of the Landlord.",
+      "riskLevel": "amber",
+      "riskExplanation": "Standard subletting restriction, but 'consent' should include a reasonableness requirement so the landlord can't arbitrarily refuse.",
+      "suggestedRewrite": "Tenant may not sublet or assign the lease without prior written consent of the Landlord, which shall not be unreasonably withheld or delayed."
+    },
+    {
+      "clauseTitle": "Quiet Enjoyment",
+      "clauseText": "Tenant shall have the right to quiet enjoyment of the premises.",
+      "riskLevel": "green",
+      "riskExplanation": "A standard quiet enjoyment clause that protects the tenant's right to use the property peacefully.",
+      "suggestedRewrite": null
+    },
+    {
+      "clauseTitle": "Parking",
+      "clauseText": "Tenant shall be provided one (1) designated parking space at no additional charge.",
+      "riskLevel": "green",
+      "riskExplanation": "Clear, fair allocation of parking at no extra cost is reasonable.",
+      "suggestedRewrite": null
+    }
+  ],
+  "gaps": [
+    {
+      "gapTitle": "No Move-In Inspection",
+      "gapDescription": "The lease does not include a move-in inspection process to document the existing condition of the premises.",
+      "recommendedAction": "Add a move-in/move-out inspection checklist to be completed jointly by both parties, with photos, to prevent disputes over security deposit deductions."
+    },
+    {
+      "gapTitle": "No Dispute Resolution Mechanism",
+      "gapDescription": "There is no specified process for resolving disputes between landlord and tenant.",
+      "recommendedAction": "Add a mediation or arbitration clause requiring good-faith negotiation before either party can file a lawsuit."
+    },
+    {
+      "gapTitle": "No Renters Insurance Requirement",
+      "gapDescription": "The lease does not address renter's insurance, leaving the tenant's personal property unprotected.",
+      "recommendedAction": "Add a clause requiring the tenant to maintain renter's insurance and naming the landlord as an interested party."
+    }
+  ]
+}

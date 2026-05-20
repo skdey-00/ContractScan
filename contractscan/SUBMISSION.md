@@ -175,15 +175,15 @@ The legal tech market in India alone is projected at ₹180 crore ARR by 2027. G
 5. ~~Negotiation cheat sheet~~ -- prioritized action items derived from analysis
 6. ~~Agent reasoning visualization~~ -- transparent 3-step chain-of-thought display
 7. ~~Shareable report links~~ -- one-click URL sharing with base64 encoding
-8. ~~Dark mode~~ -- full dark/light theme toggle
+8. ~~Dark mode~~ -- full dark/light theme toggle (dark by default)
 9. ~~Mobile responsive~~ -- works on all screen sizes
+10. ~~Chrome Extension~~ -- right-click any contract text on any website to get instant analysis in a side panel
 
 ### Future Roadmap
-1. **Chrome Extension** -- highlight any contract text on any website (DocuSign, Google Docs, PDF viewers) and right-click to analyze. Real-time clause highlighting as you scroll. Notification badge when risky clauses are detected on the current page. This brings ContractScan to where people actually sign contracts -- in their browser.
-2. **Batch analysis** -- upload a folder of contracts and rank them by risk
-3. **Regional language support** -- Hindi, Tamil, Bengali contract analysis for tier-2/3 India
-4. **Document signing integration** -- connect with DocuSign/Adobe Sign APIs to analyze before you sign
-5. **Enterprise dashboard** -- manage contracts for teams with role-based access
+1. **Batch analysis** -- upload a folder of contracts and rank them by risk
+2. **Regional language support** -- Hindi, Tamil, Bengali contract analysis for tier-2/3 India
+3. **Document signing integration** -- connect with DocuSign/Adobe Sign APIs to analyze before you sign
+4. **Enterprise dashboard** -- manage contracts for teams with role-based access
 
 ---
 
@@ -192,6 +192,14 @@ The legal tech market in India alone is projected at ₹180 crore ARR by 2027. G
 - **Live Demo:** https://contractscan-eight.vercel.app
 - **Demo with pre-loaded contract:** https://contractscan-eight.vercel.app/?demo=true
 - **Source Code:** [GitHub repo link]
+
+### Chrome Extension Setup
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable "Developer mode" (top-right toggle)
+3. Click "Load unpacked" and select the `chrome-extension/` folder
+4. Navigate to any website with contract text (e.g. a terms of service page)
+5. Select the contract text, right-click, and choose "Analyze with ContractScan"
+6. The side panel opens with a full AI-powered analysis
 
 ---
 

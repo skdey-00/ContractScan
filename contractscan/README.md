@@ -1,209 +1,131 @@
-<p align="center">
-  <img src="https://img.shields.io/badge/Next.js-16.2-black?logo=next.js" alt="Next.js" />
-  <img src="https://img.shields.io/badge/React-19.2-61DAFB?logo=react" alt="React" />
-  <img src="https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?logo=tailwindcss" alt="Tailwind CSS" />
-  <img src="https://img.shields.io/badge/Groq-llama--3.3--70b-F55036?logo=groq" alt="Groq" />
-  <img src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript" alt="TypeScript" />
-  <img src="https://img.shields.io/badge/License-MIT-green" alt="License" />
-</p>
+# ContractScan AI — Demo Guide
 
-<h1 align="center">ContractScan AI</h1>
+AI-powered contract analysis platform with a 3-agent architecture (Identify → Assess → Gap Analysis). Built for the AI Agents Hackathon.
 
-<p align="center">
-  <strong>AI-powered contract risk analysis for non-lawyers.</strong><br/>
-  Drop a PDF or paste contract text. Get a colour-coded risk report in seconds.
-</p>
+Live at: **https://contractscan-eight.vercel.app**
 
 ---
 
-## Screenshot
+## Quick Demo (2 minutes)
 
-> **TODO:** Add a screenshot of the app here. Drop an image into `public/screenshot.png` and reference it:
->
-> `<img src="public/screenshot.png" alt="ContractScan AI screenshot" width="700" />`
+### Step 1: Landing Page
+Open https://contractscan-eight.vercel.app. You'll see the dark-themed landing page with the "Don't Sign Blind." hero section and the "How It Works" feature cards explaining the 3-agent pipeline.
+
+### Step 2: Load Demo Contract
+Click the **"Try Demo"** button in the hero, OR scroll down to the tool and click **"Load Demo"**. A residential lease agreement will populate the text area. This demo works offline and bypasses the API rate limit — it uses a cached result so it always works.
+
+### Step 3: Analyze
+Click **"Analyse Contract"**. The agent steps will animate through:
+1. **Document Intelligence** — identifies the contract type
+2. **Risk Assessment** — flags every clause as red/amber/green
+3. **Gap Analysis** — spots missing protections
+
+After ~1.5 seconds the full analysis appears on the right panel.
+
+### Step 4: Explore the Results
+- **Fairness Score** — animated gauge showing 30/100 (this lease is heavily one-sided)
+- **Clause Breakdown** — 14 clauses sorted by risk (7 red, 3 amber, 4 green), each with a plain-English explanation and a suggested rewrite
+- **Missing Protections** — 3 gaps identified (no move-in inspection, no dispute resolution, no renter's insurance)
+- **Negotiation Cheat Sheet** — prioritized action items derived from the analysis
+- **Agent Reasoning** — transparent chain-of-thought showing how each agent reached its conclusions
+- **Chat with Contract** — ask follow-up questions about the contract in natural language
+- **Compare Two Versions** — upload or paste a second version of a contract and get a side-by-side diff
+- **Share Report** — generate a shareable URL with the full analysis encoded
+
+### Step 5: Dark/Light Toggle
+Click the sun/moon icon in the header to toggle themes.
 
 ---
 
-## What It Does
+## Chrome Extension Demo (3 minutes)
 
-ContractScan AI analyses contracts and legal documents using a 3-step AI agent built on top of Groq's ultra-fast LLM inference. It is designed for people who sign contracts but can't afford a lawyer to review every clause.
+### Setup (one-time, 30 seconds)
+1. Open Chrome and go to `chrome://extensions/`
+2. Enable **Developer mode** (toggle in the top-right)
+3. Click **"Load unpacked"**
+4. Navigate to the `chrome-extension/` folder inside this project and select it
+5. The ContractScan AI icon appears in your extensions bar
 
-Given any contract text (uploaded PDF or pasted text), it:
+### Demo
+1. Open any website with legal/contract text. Good examples:
+   - https://www.apple.com/legal/internet-services/itunes/dev/stdevstandard/ (Apple Developer Agreement)
+   - https://twitter.com/en/tos (Twitter/X Terms of Service)
+   - https://www.netflix.com/termsofuse (Netflix Terms of Use)
+   - Or any DocuSign/Google Docs/PDF viewer with a contract
+2. **Select a large chunk of contract text** (at least a paragraph — 100+ characters)
+3. **Right-click** and choose **"Analyze with ContractScan"**
+4. The Chrome side panel slides open from the right
+5. Shows loading spinner, then the full analysis:
+   - Document type detection
+   - Fairness score with color coding
+   - Risk breakdown (red/amber/green counts)
+   - Clause-by-clause cards sorted by risk level
+   - Suggested rewrites for unfair clauses
+   - Missing protections / gap analysis
+6. Click "Open full analysis at ContractScan AI" to jump to the web app
 
-1. **Identifies the document type** — NDA, employment offer, freelance contract, lease, SaaS terms, vendor agreement, etc.
-2. **Extracts and assesses every clause** — each clause gets a risk rating (green / amber / red) with a plain-English summary and actionable recommendation.
-3. **Runs a gap analysis** — flags important clauses that are missing from the contract but should be there.
-
-The result is a structured risk report you can read and act on without any legal knowledge.
+### Note on Rate Limits
+The extension calls the same Groq API as the web app. The free tier allows ~100K tokens/day. If you hit the limit during demo, the web app's "Load Demo" button always works because it uses a cached result. Wait a few hours for the rate limit to reset for live analysis.
 
 ---
 
-## How It Works — The 3-Step Agent
+## Custom Contract Demo
+
+### Paste Your Own Contract
+1. Scroll to the tool section
+2. Paste any contract text (100+ characters) into the text area
+3. Click "Analyse Contract"
+4. The 3 agents will process it and return a full analysis
+
+### Upload a PDF
+1. Drag and drop a PDF file onto the drop zone, or click to browse
+2. The text is extracted client-side using pdfjs-dist (no server processing)
+3. Click "Analyse Contract"
+
+---
+
+## Architecture Overview
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                   ContractScan AI Agent                   │
-│                  (Single LLM call, 3 steps)               │
-│                                                          │
-│  Step 1 ─ Document Type Identification                   │
-│    → "What kind of contract is this?"                    │
-│    → Build a mental model of expected standard clauses    │
-│                                                          │
-│  Step 2 ─ Clause-by-Clause Risk Assessment               │
-│    → Extract every clause                                │
-│    → Rate each green / amber / red                       │
-│    → Write plain-English summary + recommendation        │
-│                                                          │
-│  Step 3 ─ Gap Analysis                                   │
-│    → Compare found clauses vs. expected standard clauses  │
-│    → Flag what is MISSING and how important it is         │
-│                                                          │
-│  Output ─ Structured JSON risk report                    │
-└──────────────────────────────────────────────────────────┘
+User Input (text/PDF)
+       |
+       v
+  [Agent 1: Document Intelligence]
+    - Identifies document type
+    - Extracts key parties and structure
+       |
+       v
+  [Agent 2: Risk Assessment]
+    - Flags every clause as red/amber/green
+    - Generates plain-English risk explanations
+    - Suggests fair rewrites for unfair clauses
+       |
+       v
+  [Agent 3: Gap Analysis]
+    - Identifies missing protections
+    - Recommends clauses to add
+    - Highlights one-sided terms
+       |
+       v
+  Full Analysis Report
+    - Fairness score (0-100)
+    - Clause-by-clause breakdown
+    - Negotiation cheat sheet
+    - Agent reasoning visualization
+    - Chat follow-up questions
+    - Comparison with other versions
+    - Shareable report link
 ```
-
-The agent runs as a single Groq API call with a carefully engineered system prompt (see `src/lib/prompts.ts`). This keeps latency low (typically 5-15 seconds for a full contract) while producing structured, parseable JSON output.
 
 ---
 
 ## Tech Stack
 
-| Layer           | Technology                    |
-| --------------- | ----------------------------- |
-| Framework       | Next.js 16 (App Router)       |
-| UI              | React 19 + Tailwind CSS v4    |
-| Language        | TypeScript 5                  |
-| AI / LLM        | Groq API (`llama-3.3-70b-versatile`) |
-| PDF Parsing     | pdfjs-dist (client-side)      |
-| Deployment      | Vercel (recommended)          |
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- **Node.js** 18.17 or later
-- **npm** (or pnpm / yarn)
-- A **Groq API key** — get one free at [console.groq.com](https://console.groq.com/)
-
-### Install
-
-```bash
-git clone <your-repo-url> contractscan
-cd contractscan
-npm install
-```
-
-### Environment Setup
-
-Create a `.env.local` file in the project root:
-
-```env
-GROQ_API_KEY=gsk_your_api_key_here
-```
-
-> The Groq SDK reads this variable automatically. Never commit this file to version control.
-
-### Run
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) in your browser.
-
----
-
-## Demo Mode
-
-Try the app instantly without preparing a contract:
-
-- **URL flag:** Visit [http://localhost:3000/?demo=true](http://localhost:3000/?demo=true) — a sample contract auto-loads into the text area.
-- **Button:** Click the "Load Demo Contract" button on the main page.
-
-The demo contract is served from `public/demo-contract.txt`.
-
----
-
-## API Documentation
-
-### `POST /api/analyze`
-
-Analyse a contract and return a structured risk report.
-
-**Request:**
-
-```json
-{
-  "text": "FULL CONTRACT TEXT HERE..."
-}
-```
-
-| Field  | Type   | Required | Description                          |
-| ------ | ------ | -------- | ------------------------------------ |
-| `text` | string | Yes      | Full contract text (100–200,000 chars) |
-
-**Response (200):**
-
-```json
-{
-  "documentType": "Non-Disclosure Agreement",
-  "overallRisk": "medium",
-  "clauses": [
-    {
-      "title": "Non-Compete Scope",
-      "summary": "This clause prevents you from working...",
-      "riskLevel": "red",
-      "recommendation": "Ask to narrow the scope...",
-      "details": "Optional longer explanation..."
-    }
-  ],
-  "gapAnalysis": [
-    {
-      "clause": "Dispute Resolution",
-      "importance": "high",
-      "suggestion": "Add a mediation clause before..."
-    }
-  ]
-}
-```
-
-**Response fields:**
-
-| Field           | Type     | Description                                    |
-| --------------- | -------- | ---------------------------------------------- |
-| `documentType`  | string   | Identified contract type                       |
-| `overallRisk`   | string   | `"low"` / `"medium"` / `"high"`               |
-| `clauses`       | array    | List of clause analyses (see below)            |
-| `gapAnalysis`   | array    | List of missing clauses (see below)            |
-| `_rawOutput`    | string   | (Fallback only) Raw LLM output if JSON parse fails |
-
-**Clause object:**
-
-| Field            | Type   | Description                            |
-| ---------------- | ------ | -------------------------------------- |
-| `title`          | string | Short clause name                      |
-| `summary`        | string | Plain-English explanation              |
-| `riskLevel`      | string | `"green"` / `"amber"` / `"red"`       |
-| `recommendation` | string | What the user should do                |
-| `details`        | string | (Optional) Longer explanation          |
-
-**Gap analysis object:**
-
-| Field         | Type   | Description                        |
-| ------------- | ------ | ---------------------------------- |
-| `clause`      | string | Name of the missing clause         |
-| `importance`  | string | `"high"` / `"medium"` / `"low"`   |
-| `suggestion`  | string | What to add, in plain English      |
-
-**Error responses:**
-
-| Status | When                                   |
-| ------ | -------------------------------------- |
-| 400    | Missing text, text too short (<100) or too long (>200K) |
-| 500    | API key error or internal server error |
-| 503    | Groq rate limit hit                   |
+- **Frontend:** Next.js 16, React 19, Tailwind CSS v4, TypeScript
+- **AI:** Groq API (llama-3.3-70b-versatile) — 3-step agent pipeline
+- **PDF Parsing:** pdfjs-dist (client-side extraction)
+- **Deployment:** Vercel (serverless functions for API routes)
+- **Chrome Extension:** Manifest V3, Side Panel API, Context Menus API
 
 ---
 
@@ -213,94 +135,57 @@ Analyse a contract and return a structured risk report.
 contractscan/
 ├── src/
 │   ├── app/
-│   │   ├── page.tsx              # Main UI — drag-drop, text paste, results
+│   │   ├── page.tsx              # Main landing page + tool
+│   │   ├── layout.tsx            # Root layout with dark theme
+│   │   ├── globals.css           # Tailwind + custom animations
 │   │   └── api/
-│   │       └── analyze/
-│   │           └── route.ts      # POST /api/analyze — Groq SDK endpoint
+│   │       ├── analyze/route.ts  # Main analysis API (3 agents)
+│   │       └── chat/route.ts     # Chat follow-up API
 │   ├── components/
-│   │   ├── AgentSteps.tsx        # 3-step progress indicator
-│   │   ├── RiskCard.tsx          # Green / amber / red clause card
-│   │   └── RiskReport.tsx        # Full report container + gap analysis
+│   │   ├── AgentSteps.tsx        # 3-step pipeline visualization
+│   │   ├── RiskReport.tsx        # Full analysis report
+│   │   ├── RiskCard.tsx          # Individual clause card
+│   │   ├── ScoreGauge.tsx        # Animated fairness score
+│   │   ├── NegotiationCheatSheet.tsx
+│   │   ├── AgentReasoning.tsx    # Chain-of-thought display
+│   │   ├── ChatPanel.tsx         # Conversational Q&A
+│   │   ├── ContractComparison.tsx # Side-by-side diff
+│   │   ├── ShareableReport.tsx   # URL sharing
+│   │   └── ThemeToggle.tsx       # Dark/light toggle
 │   └── lib/
-│       ├── prompts.ts            # 3-step system prompt (core IP)
-│       └── pdfExtractor.ts       # Client-side PDF.js text extraction
+│       └── pdfExtractor.ts       # Client-side PDF text extraction
+├── chrome-extension/
+│   ├── manifest.json             # Manifest V3 config
+│   ├── background.js             # Service worker (context menu + API)
+│   ├── content.js                # Content script (page detection)
+│   ├── sidepanel.html/css/js     # Side panel analysis UI
+│   └── icons/                    # Extension icons
 ├── public/
-│   ├── demo-contract.txt         # Demo contract for ?demo=true
-│   └── demo-contracts/           # 5+ test contracts for QA
-│       ├── nda-agreement.txt
-│       ├── freelance-contract.txt
-│       ├── employment-offer.txt
-│       ├── saas-tos.txt
-│       ├── lease-agreement.txt
+│   ├── demo-contract.txt         # Demo rental agreement text
+│   ├── demo-result.json          # Cached analysis (works offline)
+│   └── demo-contracts/           # Additional test contracts
+│       ├── nda.txt
+│       ├── employment.txt
+│       ├── freelance.txt
+│       ├── saas-terms.txt
 │       └── vendor.txt
-├── docs/
-│   └── ARCHITECTURE.md           # Technical deep dive
-├── qa_test.py                    # Automated QA test (5 contracts)
-├── package.json
-├── tsconfig.json
-├── next.config.ts
-└── .env.local                    # GROQ_API_KEY (not committed)
+└── SUBMISSION.md                 # Hackathon submission document
 ```
 
 ---
 
-## Testing
+## Judges Quick Reference
 
-### Automated QA Script
-
-A Python script tests the API against 5 demo contracts:
-
-```bash
-# Start the dev server first
-npm run dev
-
-# In another terminal, run the QA test
-python3 qa_test.py
-```
-
-The script:
-- Sends each of the 5 demo contracts to `POST /api/analyze`
-- Validates the JSON response structure
-- Checks that each contract produces at least one red-flagged clause
-- Prints a summary table with pass/fail results
-
-### Manual Testing
-
-1. Start the dev server (`npm run dev`)
-2. Visit `http://localhost:3000/?demo=true`
-3. Click "Analyse Contract"
-4. Verify the risk report renders with coloured cards
+| What to show | Time | Where |
+|---|---|---|
+| Landing page + hero | 15s | https://contractscan-eight.vercel.app |
+| Demo analysis (always works) | 30s | Click "Try Demo" → "Analyse Contract" |
+| Clause breakdown + rewrites | 30s | Scroll through results on right panel |
+| Chat with contract | 20s | Type a question in the chat panel |
+| Chrome extension | 60s | Right-click on any ToS page |
+| Compare two versions | 30s | Expand "Compare Two Versions" section |
+| Shareable link | 10s | Click share button, open in new tab |
 
 ---
 
-## Deployment
-
-### Vercel (Recommended)
-
-1. Push your code to GitHub
-2. Import the repository in [vercel.com/new](https://vercel.com/new)
-3. Add the `GROQ_API_KEY` environment variable in the Vercel dashboard
-4. Deploy — Vercel auto-detects Next.js
-
-### Other Platforms
-
-ContractScan is a standard Next.js app. You can deploy it anywhere that supports Node.js:
-
-```bash
-npm run build
-npm run start
-```
-
-Set the `GROQ_API_KEY` environment variable on your hosting platform.
-
----
-
-## Disclaimer
-
-ContractScan AI is for **educational and informational purposes only**. It does not constitute legal advice and should not be used as a substitute for professional legal counsel. Always consult a qualified attorney for important contract decisions.
-
----
-
-## License
-
-MIT
+*Built for the AI Agents Hackathon. Every signature should be an informed one.*

@@ -124,6 +124,7 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
   const [result, setResult] = useState<any>(null);
   const [demoLoaded, setDemoLoaded] = useState(false);
+  const [isDemoText, setIsDemoText] = useState(false);
   const [analyzedText, setAnalyzedText] = useState<string>('');
 
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -138,7 +139,7 @@ export default function Home() {
     fetch('/demo-contract.txt')
       .then((r) => r.text())
       .then((t) => {
-        setText(t);
+        setText(t); setIsDemoText(true);
         setTimeout(() => mainRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
       })
       .catch(() => {});
@@ -152,7 +153,7 @@ export default function Home() {
     if (params.get('demo') === 'true' && !demoLoaded) {
       fetch('/demo-contract.txt')
         .then((r) => r.text())
-        .then((t) => { setText(t); setDemoLoaded(true); })
+        .then((t) => { setText(t); setDemoLoaded(true); setIsDemoText(true); })
         .catch(() => {});
     }
   }, [demoLoaded]);
@@ -161,7 +162,7 @@ export default function Home() {
 
   const acceptFile = useCallback((f: File) => {
     if (f.type !== 'application/pdf') { setError('Only PDF files are accepted.'); return; }
-    setFile(f); setText(''); setResult(null); setError(null);
+    setFile(f); setText(''); setResult(null); setError(null); setIsDemoText(false);
   }, []);
 
   const handleReset = useCallback(() => {
@@ -188,6 +189,15 @@ export default function Home() {
         setError('No contract text to analyse. Upload a PDF or paste text.');
         setIsLoading(false); return;
       }
+
+      // Use cached result for demo contract (works offline / rate-limited)
+      if (isDemoText && !file) {
+        await new Promise(r => setTimeout(r, 1500)); // simulate processing
+        const cached = await fetch('/demo-result.json').then(r => r.json());
+        setResult(cached); setAnalyzedText(contractText);
+        setIsLoading(false); return;
+      }
+
       const res = await fetch('/api/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -221,8 +231,8 @@ export default function Home() {
 
           {/* Nav links */}
           <nav className="hidden md:flex items-center gap-6 ml-8">
-            <button onClick={scrollToMain} className="text-xs text-zinc-400 hover:text-white transition-colors">Features</button>
-            <a href="#how-it-works" className="text-xs text-zinc-400 hover:text-white transition-colors">How It Works</a>
+            <a href="#how-it-works" className="text-xs text-zinc-400 hover:text-white transition-colors">Features</a>
+            <a href="#tool" className="text-xs text-zinc-400 hover:text-white transition-colors">Try It</a>
           </nav>
 
           <div className="ml-auto flex items-center gap-3">
@@ -269,7 +279,7 @@ export default function Home() {
       </section>
 
       {/* ── Main Tool ───────────────────────────────────────── */}
-      <section ref={mainRef} className="border-t border-zinc-800/60">
+      <section id="tool" ref={mainRef} className="border-t border-zinc-800/60">
         <div className="mx-auto max-w-6xl px-6 py-16">
           {/* Section header */}
           <div className="mb-8 text-center">
@@ -340,6 +350,7 @@ export default function Home() {
                 value={text}
                 onChange={(e) => {
                   setText(e.target.value);
+                  setIsDemoText(false);
                   if (e.target.value.trim() && file) setFile(null);
                   setResult(null); setError(null);
                 }}
@@ -376,7 +387,7 @@ export default function Home() {
                     onClick={() => {
                       fetch('/demo-contract.txt')
                         .then((r) => r.text())
-                        .then((t) => setText(t))
+                        .then((t) => { setText(t); setIsDemoText(true); })
                         .catch(() => {});
                     }}
                     className="inline-flex items-center gap-2 rounded-lg border border-zinc-700 bg-zinc-800/40 px-5 py-3 text-sm font-medium text-zinc-400 transition-all hover:border-zinc-600 hover:bg-zinc-800 hover:text-zinc-200"
