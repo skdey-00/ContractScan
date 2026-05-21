@@ -194,7 +194,7 @@ export default function Home() {
 
       // Use cached result for demo contract (works offline / rate-limited)
       if (isDemoText && !file) {
-        await new Promise(r => setTimeout(r, 1500)); // simulate processing
+        await new Promise(r => setTimeout(r, 5500)); // simulate full pipeline processing
         const cached = await fetch('/demo-result.json').then(r => r.json());
         setResult(cached); setAnalyzedText(contractText);
         setIsLoading(false); return;
