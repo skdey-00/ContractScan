@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { runPipeline } from '@/lib/agents/orchestrator';
+import Groq from 'groq-sdk';
+import { simulateNegotiation } from '@/lib/agents/negotiator';
+
+const groq = new Groq(); // Uses GROQ_API_KEY from env
 
 // Only POST is allowed
 export async function GET() {
@@ -22,38 +25,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { text } = body;
+    const { contractText, analysisResult } = body;
 
-    if (!text || typeof text !== 'string') {
+    // Validate required fields
+    if (!contractText || typeof contractText !== 'string') {
       return NextResponse.json(
         { error: 'Contract text is required.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length < 100) {
+    if (!analysisResult || typeof analysisResult !== 'object') {
       return NextResponse.json(
-        { error: 'Contract text must be at least 100 characters. Please provide the full contract text.' },
+        { error: 'Analysis result is required.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length > 200000) {
-      return NextResponse.json(
-        { error: 'The document is too long. Please provide a contract under 200,000 characters.' },
-        { status: 400 },
-      );
-    }
-
-    // Run the multi-agent pipeline
-    const result = await runPipeline(text);
+    // Run the negotiation simulation
+    const result = await simulateNegotiation(groq, contractText, analysisResult);
 
     return NextResponse.json(result);
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : 'An unexpected error occurred.';
 
-    console.error('[/api/analyze] Error:', error);
+    console.error('[/api/negotiate] Error:', error);
 
     // Handle rate limit errors gracefully
     if (message.includes('rate limit') || message.includes('429') || message.includes('overloaded') || message.includes('capacity')) {
@@ -72,7 +69,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Analysis failed. Please try again.' },
+      { error: 'Negotiation simulation failed. Please try again.' },
       { status: 500 },
     );
   }

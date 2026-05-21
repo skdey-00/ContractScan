@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import AgentSteps from '@/components/AgentSteps';
+import AgentPipeline from '@/components/AgentPipeline';
 import RiskReport from '@/components/RiskReport';
 import NegotiationCheatSheet from '@/components/NegotiationCheatSheet';
 import AgentReasoning from '@/components/AgentReasoning';
@@ -9,6 +9,8 @@ import ChatPanel from '@/components/ChatPanel';
 import ThemeToggle from '@/components/ThemeToggle';
 import ContractComparison from '@/components/ContractComparison';
 import ShareableReport, { decodeShareableData } from '@/components/ShareableReport';
+import NegotiationSim from '@/components/NegotiationSim';
+import RewrittenContract from '@/components/RewrittenContract';
 import { extractTextFromPDF } from '@/lib/pdfExtractor';
 
 // ── Back to Top ──────────────────────────────────────────────
@@ -250,7 +252,7 @@ export default function Home() {
           <div className="mb-12 text-center">
             <p className="text-xs font-semibold uppercase tracking-widest text-blue-400">How It Works</p>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-white">
-              Three agents. One report. Zero surprises.
+              Six agents. One report. Zero surprises.
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -273,6 +275,16 @@ export default function Home() {
               icon={<svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>}
               title="Chat with Contract"
               desc="Ask questions about your contract and get instant, sourced answers from the AI."
+            />
+            <FeatureCard
+              icon={<svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 01-.825-.242m9.345-8.334a2.126 2.126 0 00-.476-.095 48.64 48.64 0 00-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0011.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" /></svg>}
+              title="Negotiation Simulator"
+              desc="Agent 5 role-plays both sides, giving you exact counters for every unfair term."
+            />
+            <FeatureCard
+              icon={<svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}><path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" /></svg>}
+              title="Clause Rewriter"
+              desc="Agent 6 rewrites unfair clauses into fair, balanced alternatives you can propose."
             />
           </div>
         </div>
@@ -398,7 +410,7 @@ export default function Home() {
               </div>
 
               {/* Agent Steps */}
-              <AgentSteps isLoading={isLoading} />
+              <AgentPipeline isLoading={isLoading} result={result} />
             </div>
 
             {/* ── RIGHT: Results ───────────────────────────────── */}
@@ -422,7 +434,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm font-medium text-zinc-300">Analysing your contract</p>
-                    <p className="mt-1 text-xs text-zinc-500">Three agents are working in parallel...</p>
+                    <p className="mt-1 text-xs text-zinc-500">Multiple AI agents are analyzing your contract...</p>
                   </div>
                 </div>
               )}
@@ -445,6 +457,16 @@ export default function Home() {
                   <div className="animate-fade-in-up delay-75"><RiskReport result={result} contractText={analyzedText} /></div>
                   <div className="animate-fade-in-up delay-150"><ShareableReport result={result} /></div>
                   <div className="animate-fade-in-up delay-200"><NegotiationCheatSheet result={result} /></div>
+                  {analyzedText && (
+                    <div className="animate-fade-in-up delay-250">
+                      <NegotiationSim contractText={analyzedText} analysisResult={result} />
+                    </div>
+                  )}
+                  {analyzedText && (
+                    <div className="animate-fade-in-up delay-275">
+                      <RewrittenContract contractText={analyzedText} clauses={result.clauses} />
+                    </div>
+                  )}
                   <div className="animate-fade-in-up delay-300"><AgentReasoning result={result} /></div>
                   {analyzedText && (
                     <div className="animate-fade-in-up delay-300"><ChatPanel contractText={analyzedText} analysisContext={result} /></div>

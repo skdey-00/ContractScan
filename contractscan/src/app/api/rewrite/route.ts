@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { runPipeline } from '@/lib/agents/orchestrator';
+import Groq from 'groq-sdk';
+import { rewriteContract } from '@/lib/agents/rewriter';
+
+const groq = new Groq(); // Uses GROQ_API_KEY from env
 
 // Only POST is allowed
 export async function GET() {
@@ -22,41 +25,40 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const { text } = body;
+    const { contractText, clauses } = body;
 
-    if (!text || typeof text !== 'string') {
+    // Validate required fields
+    if (!contractText || typeof contractText !== 'string') {
       return NextResponse.json(
-        { error: 'Contract text is required.' },
+        { error: 'Contract text is required and must be a string.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length < 100) {
+    if (!Array.isArray(clauses)) {
       return NextResponse.json(
-        { error: 'Contract text must be at least 100 characters. Please provide the full contract text.' },
+        { error: 'Clauses must be provided as an array.' },
         { status: 400 },
       );
     }
 
-    if (text.trim().length > 200000) {
-      return NextResponse.json(
-        { error: 'The document is too long. Please provide a contract under 200,000 characters.' },
-        { status: 400 },
-      );
-    }
-
-    // Run the multi-agent pipeline
-    const result = await runPipeline(text);
+    // Run the rewrite agent
+    const result = await rewriteContract(groq, contractText, clauses);
 
     return NextResponse.json(result);
   } catch (error: unknown) {
     const message =
       error instanceof Error ? error.message : 'An unexpected error occurred.';
 
-    console.error('[/api/analyze] Error:', error);
+    console.error('[/api/rewrite] Error:', error);
 
     // Handle rate limit errors gracefully
-    if (message.includes('rate limit') || message.includes('429') || message.includes('overloaded') || message.includes('capacity')) {
+    if (
+      message.includes('rate limit') ||
+      message.includes('429') ||
+      message.includes('overloaded') ||
+      message.includes('capacity')
+    ) {
       return NextResponse.json(
         { error: 'The service is currently busy. Please try again in a moment.' },
         { status: 503 },
@@ -64,7 +66,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Handle API key errors gracefully
-    if (message.includes('API key') || message.includes('authentication') || message.includes('401') || message.includes('Invalid API Key')) {
+    if (
+      message.includes('API key') ||
+      message.includes('authentication') ||
+      message.includes('401') ||
+      message.includes('Invalid API Key')
+    ) {
       return NextResponse.json(
         { error: 'Service configuration error. Please try again later.' },
         { status: 500 },
@@ -72,7 +79,7 @@ export async function POST(request: NextRequest) {
     }
 
     return NextResponse.json(
-      { error: 'Analysis failed. Please try again.' },
+      { error: 'Contract rewrite failed. Please try again.' },
       { status: 500 },
     );
   }
