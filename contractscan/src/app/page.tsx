@@ -216,7 +216,7 @@ export default function Home() {
 
   // ── Render ───────────────────────────────────────────────────
   return (
-    <div className="dark min-h-screen flex flex-col bg-zinc-950 text-zinc-100">
+    <div className="min-h-screen flex flex-col bg-zinc-950 dark:bg-zinc-950 text-zinc-100 dark:text-zinc-100">
 
       {/* ── Header ──────────────────────────────────────────── */}
       <header className="sticky top-0 z-50 border-b border-zinc-800/80 bg-zinc-950/80 glass">

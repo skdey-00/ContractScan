@@ -42,7 +42,7 @@ export default function ContractComparison() {
   const [text2, setText2] = useState('');
   const [result1, setResult1] = useState<AnalysisResult | null>(null);
   const [result2, setResult2] = useState<AnalysisResult | null>(null);
-  const [analyzing, setAnalyzing] = useState<0 | 1 | 2 | 0>(0);
+  const [analyzing, setAnalyzing] = useState<0 | 1 | 2>(0);
   const [error, setError] = useState<string | null>(null);
 
   const analyze = useCallback(async (text: string, slot: 1 | 2) => {

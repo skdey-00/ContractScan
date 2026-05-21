@@ -8,6 +8,16 @@
 }
 
 :root {
+  --background: #f4f4f5;
+  --foreground: #18181b;
+  --card-bg: #ffffff;
+  --card-border: #e4e4e7;
+  --muted: #f4f4f5;
+  --muted-text: #71717a;
+  --accent: #3b82f6;
+}
+
+.dark {
   --background: #09090b;
   --foreground: #fafafa;
   --card-bg: #18181b;
@@ -56,8 +66,11 @@ body, header, .card, .glass, button, input, textarea, select {
 
 /* ── Dot grid background ────────────────────── */
 .dot-grid {
-  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0,0,0,0.06) 1px, transparent 1px);
   background-size: 32px 32px;
+}
+.dark .dot-grid {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
 }
 
 /* ── Radial glow effect ─────────────────────── */
@@ -74,5 +87,7 @@ body, header, .card, .glass, button, input, textarea, select {
 /* ── Scrollbar ──────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #52525b; }
+::-webkit-scrollbar-thumb { background: #d4d4d8; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #a1a1aa; }
+.dark ::-webkit-scrollbar-thumb { background: #3f3f46; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #52525b; }

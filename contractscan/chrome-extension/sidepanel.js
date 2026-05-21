@@ -70,8 +70,12 @@
 
   function renderResult(data) {
     const scoreClass = data.fairnessScore < 40 ? 'low' : data.fairnessScore < 70 ? 'mid' : 'high';
+
+    // API returns: clauses[] with { title, summary, riskLevel, recommendation, suggestedRewrite, details }
     const clauses = data.clauses || [];
-    const gaps = data.gaps || [];
+    // API returns: gapAnalysis[] with { clause, importance, suggestion }
+    const gaps = data.gapAnalysis || [];
+
     const redCount = clauses.filter(c => c.riskLevel === 'red').length;
     const amberCount = clauses.filter(c => c.riskLevel === 'amber').length;
     const greenCount = clauses.filter(c => c.riskLevel === 'green').length;
@@ -84,10 +88,16 @@
       .map(c => `
         <div class="clause-card risk-${c.riskLevel}">
           <div class="clause-header">
-            <span class="clause-title">${escapeHtml(c.clauseTitle)}</span>
+            <span class="clause-title">${escapeHtml(c.title)}</span>
             <span class="risk-badge ${c.riskLevel}">${c.riskLevel}</span>
           </div>
-          <p class="clause-explanation">${escapeHtml(c.riskExplanation)}</p>
+          <p class="clause-explanation">${escapeHtml(c.summary)}</p>
+          ${c.recommendation ? `
+            <div class="clause-rewrite">
+              <span class="label">Recommendation:</span>
+              ${escapeHtml(c.recommendation)}
+            </div>
+          ` : ''}
           ${c.suggestedRewrite ? `
             <div class="clause-rewrite">
               <span class="label">Suggested Rewrite:</span>
@@ -101,12 +111,14 @@
     let gapsHtml = gaps
       .map(g => `
         <div class="gap-card">
-          <h4>${escapeHtml(g.gapTitle)}</h4>
-          <p>${escapeHtml(g.gapDescription)}</p>
-          <div class="recommendation">${escapeHtml(g.recommendedAction)}</div>
+          <h4>${escapeHtml(g.clause)}</h4>
+          <span class="risk-badge ${g.importance === 'high' ? 'red' : g.importance === 'medium' ? 'amber' : 'green'}">${escapeHtml(g.importance || 'medium')} importance</span>
+          <p>${escapeHtml(g.suggestion)}</p>
         </div>
       `)
       .join('');
+
+    const riskLabel = data.overallRisk === 'high' ? 'High Risk' : data.overallRisk === 'medium' ? 'Medium Risk' : 'Low Risk';
 
     app.innerHTML = `
       <div class="header">
@@ -122,9 +134,12 @@
       </div>
 
       <div class="score-section">
-        <div class="score-number ${scoreClass}">${data.fairnessScore}</div>
+        <div class="score-number ${scoreClass}">${data.fairnessScore != null ? data.fairnessScore : '—'}</div>
         <div class="score-label">Fairness Score</div>
         <div class="doc-type">${escapeHtml(data.documentType || 'Contract')}</div>
+        <div style="margin-top:6px;">
+          <span class="risk-badge ${data.overallRisk === 'high' ? 'red' : data.overallRisk === 'medium' ? 'amber' : 'green'}">${riskLabel}</span>
+        </div>
       </div>
 
       <div class="stats-bar">
@@ -142,12 +157,8 @@
         </div>
       </div>
 
-      ${data.overallAssessment ? `
-        <p style="font-size:12px;color:var(--text2);margin-bottom:16px;line-height:1.6;">${escapeHtml(data.overallAssessment)}</p>
-      ` : ''}
-
       <div class="section-title">Clause Analysis</div>
-      ${clausesHtml}
+      ${clausesHtml || '<p style="font-size:12px;color:var(--text2);">No clauses detected.</p>'}
 
       ${gaps.length > 0 ? `
         <div class="section-title">Missing Protections (${gaps.length})</div>
@@ -165,8 +176,9 @@
   // ── Helpers ──────────────────────────────────────────────
 
   function escapeHtml(text) {
+    if (text == null) return '';
     const div = document.createElement('div');
-    div.textContent = text;
+    div.textContent = String(text);
     return div.innerHTML;
   }
 
