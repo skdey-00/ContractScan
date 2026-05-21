@@ -12,7 +12,7 @@ import type { CritiqueResult } from './critic';
 
 interface AgentTrace {
   name: string;
-  status: 'success' | 'error' | 'skipped';
+  status: 'done' | 'error' | 'skipped';
   duration: number;
   output?: string;
   error?: string;
@@ -53,14 +53,14 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
     const start = Date.now();
     classifierOutput = await classifyDocument(groq, contractText);
     agents.push({
-      name: 'classifier',
-      status: 'success',
+      name: 'Document Classifier',
+      status: 'done',
       duration: Date.now() - start,
       output: `Identified as "${classifierOutput.documentType}" with ${classifierOutput.expectedClauses.length} expected clauses`,
     });
   } catch (err: any) {
     agents.push({
-      name: 'classifier',
+      name: 'Document Classifier',
       status: 'error',
       duration: 0,
       error: err?.message ?? String(err),
@@ -86,14 +86,14 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
     }
     extractResult = await extractClauses(groq, contractText, classifierOutput);
     agents.push({
-      name: 'extractor',
-      status: 'success',
+      name: 'Clause Analyzer',
+      status: 'done',
       duration: Date.now() - start,
       output: `Extracted ${extractResult.clauses.length} clauses (risk: ${extractResult.overallRisk}, fairness: ${extractResult.fairnessScore})`,
     });
   } catch (err: any) {
     agents.push({
-      name: 'extractor',
+      name: 'Clause Analyzer',
       status: 'error',
       duration: 0,
       error: err?.message ?? String(err),
@@ -128,8 +128,8 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
         classifierOutput.documentType,
       );
       agents.push({
-        name: 'critic',
-        status: 'success',
+        name: 'Self-Critique',
+        status: 'done',
         duration: Date.now() - start,
         output: critiqueResult.needsReanalysis
           ? `Found ${critiqueResult.missedClauses.length} missed clauses: ${critiqueResult.critiqueNotes}`
@@ -149,7 +149,7 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
       }
     } catch (err: any) {
       agents.push({
-        name: 'critic',
+        name: 'Self-Critique',
         status: 'error',
         duration: 0,
         error: err?.message ?? String(err),
@@ -157,7 +157,7 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
       console.error('[orchestrator] Critic failed:', err);
     }
   } else {
-    agents.push({ name: 'critic', status: 'skipped', duration: 0 });
+    agents.push({ name: 'Self-Critique', status: 'skipped', duration: 0 });
   }
 
   /* ── Agent 3: Gap Finder ─────────────────────────────────────── */
@@ -170,18 +170,18 @@ export async function runPipeline(contractText: string): Promise<PipelineResult>
     if (expectedClauses.length > 0) {
       gapResult = await findGaps(groq, expectedClauses, foundTitles, docType);
       agents.push({
-        name: 'gapFinder',
-        status: 'success',
+        name: 'Gap Finder',
+        status: 'done',
         duration: Date.now() - start,
         output: `Found ${gapResult.gapAnalysis.length} gaps`,
       });
     } else {
       gapResult = { gapAnalysis: [] };
-      agents.push({ name: 'gapFinder', status: 'skipped', duration: 0 });
+      agents.push({ name: 'Gap Finder', status: 'skipped', duration: 0 });
     }
   } catch (err: any) {
     agents.push({
-      name: 'gapFinder',
+      name: 'Gap Finder',
       status: 'error',
       duration: 0,
       error: err?.message ?? String(err),
