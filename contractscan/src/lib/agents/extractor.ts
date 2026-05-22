@@ -25,11 +25,11 @@ The document has been pre-classified. Use the classification context to inform y
 Go through the document clause by clause. For EACH clause:
 
 - **title**: Short clause name
-- **summary**: Plain-English explanation. Quote key numbers, durations, conditions. Write for a 16-year-old.
+- **summary**: WHY this clause is risky or fine. Be specific with numbers. Explain in plain English for a 16-year-old.
 - **riskLevel**: "green" (standard/balanced), "amber" (unusual/one-sided, worth flagging), "red" (risky/heavily one-sided/potentially harmful)
-- **recommendation**: What the user should DO. Be specific.
-- **suggestedRewrite** (required for red/amber): Fair alternative contract language the user could propose. For green clauses, write "This clause is fair as written."
-- **details** (optional): Longer explanation of WHY flagged
+- **recommendation**: What the user should DO. Be specific and actionable.
+- **suggestedRewrite** (required for red/amber): Fair alternative contract language the user could propose. For green clauses, omit this field.
+- **details** (required for ALL clauses): The exact original text from the contract, wrapped in quotes. This is what the contract actually says about this topic.
 
 ## RISK GUIDELINES
 
@@ -67,7 +67,7 @@ Scoring heuristics: start at 75. Subtract 8-15 per RED clause, 3-8 per AMBER. Ad
       "riskLevel": "green" | "amber" | "red",
       "recommendation": "string",
       "suggestedRewrite": "string",
-      "details": "string (optional)"
+      "details": "string (the exact quoted text from the contract)"
     }
   ],
   "overallRisk": "low" | "medium" | "high",
